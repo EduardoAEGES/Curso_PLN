@@ -1,0 +1,371 @@
+[2026-02-16 14:04:59] === Iniciando Autograder ClassDojo ===
+[2026-02-16 14:04:59] Leyendo archivo Excel: registro.xlsx...
+[2026-02-16 14:05:00] Error: No se encontraron las columnas 'Usuario Classdojo' y 'Acumulado'.
+[2026-02-16 14:09:12] === Iniciando Autograder ClassDojo ===
+[2026-02-16 14:09:12] Leyendo archivo Excel: registro.xlsx...
+[2026-02-16 14:09:12] Leyendo hoja 'Continua'...
+[2026-02-16 14:09:12] Encabezados encontrados en fila 3.
+[2026-02-16 14:09:12] Se cargaron objetivos para 31 estudiantes.
+[2026-02-16 14:09:16] Navegando a: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 14:09:21] Sincronizando puntos... (Ctrl+C para detener)
+[2026-02-16 14:09:23] [PENDIENTE] Adrian Trujillo: Tiene 0, Objetivo 4. Falta 4.
+[2026-02-16 14:09:26] [PENDIENTE] Alex Melgarejo: Tiene 1, Objetivo 7. Falta 6.
+[2026-02-16 14:09:27] [PENDIENTE] Bray Huillcara: Tiene 2, Objetivo 6. Falta 4.
+[2026-02-16 14:09:28] [PENDIENTE] Carlos Ramos: Tiene 2, Objetivo 3. Falta 1.
+[2026-02-16 14:09:29] [PENDIENTE] Christofer Vilca: Tiene 1, Objetivo 2. Falta 1.
+[2026-02-16 14:09:30] [PENDIENTE] Edwin Pérez: Tiene 2, Objetivo 6. Falta 4.
+[2026-02-16 14:09:31] [PENDIENTE] Fabian Alvarez: Tiene 2, Objetivo 8. Falta 6.
+[2026-02-16 14:09:32] [PENDIENTE] Fabiola Crespo: Tiene 0, Objetivo 2. Falta 2.
+[2026-02-16 14:09:33] [PENDIENTE] Jair Candiotti: Tiene 2, Objetivo 7. Falta 5.
+[2026-02-16 14:09:34] [PENDIENTE] Jose Gustavo Vilca: Tiene 2, Objetivo 4. Falta 2.
+[2026-02-16 14:09:35] [PENDIENTE] José Martin Abad: Tiene 2, Objetivo 9. Falta 7.
+[2026-02-16 14:09:36] [PENDIENTE] Larry Prado: Tiene 2, Objetivo 7. Falta 5.
+[2026-02-16 14:09:38] [PENDIENTE] Leonardo Pantoja: Tiene 2, Objetivo 8. Falta 6.
+[2026-02-16 14:09:39] [PENDIENTE] Lidia Mita: Tiene 2, Objetivo 7. Falta 5.
+[2026-02-16 14:09:40] [PENDIENTE] Luis Ramos: Tiene 2, Objetivo 4. Falta 2.
+[2026-02-16 14:09:41] [PENDIENTE] Luz Huansi: Tiene 0, Objetivo 4. Falta 4.
+[2026-02-16 14:09:42] [PENDIENTE] Lyts Quispe: Tiene 2, Objetivo 9. Falta 7.
+[2026-02-16 14:09:42] Cerrando sesión en 5 segundos...
+[2026-02-16 14:10:55] === Iniciando Autograder ClassDojo ===
+[2026-02-16 14:10:55] Leyendo archivo Excel: registro.xlsx...
+[2026-02-16 14:10:55] Leyendo hoja 'Continua'...
+[2026-02-16 14:10:56] Encabezados encontrados en fila 3.
+[2026-02-16 14:10:56] Se cargaron objetivos para 31 estudiantes.
+[2026-02-16 14:11:00] Error iniciando Chrome: Message: session not created: Chrome failed to start: crashed.
+  (session not created: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location C:\Program Files\Google\Chrome\Application\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x97f393
+	0x97f3d4
+	0x772090
+	0x7a7726
+	0x7a2750
+	0x7eae7f
+	0x7ea697
+	0x7debb6
+	0x7b0319
+	0x7b10d4
+	0xbd4654
+	0xbcf959
+	0xbec8f0
+	0x9980a8
+	0x99fdfd
+	0x987bc8
+	0x987d92
+	0x97189a
+	0x758d5d49
+	0x7746d83b
+	0x7746d7c1
+
+[2026-02-16 14:16:19] === Iniciando Autograder ClassDojo con DEBUG DE CLICS ===
+[2026-02-16 14:16:19] Leyendo archivo Excel: registro.xlsx...
+[2026-02-16 14:16:19] Leyendo hoja 'Continua'...
+[2026-02-16 14:16:20] Encabezados encontrados en fila 3.
+[2026-02-16 14:16:20] Se cargaron objetivos para 31 estudiantes.
+[2026-02-16 14:16:23] Error iniciando Chrome: Message: session not created: Chrome failed to start: crashed.
+  (session not created: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location C:\Program Files\Google\Chrome\Application\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x97f393
+	0x97f3d4
+	0x772090
+	0x7a7726
+	0x7a2750
+	0x7eae7f
+	0x7ea697
+	0x7debb6
+	0x7b0319
+	0x7b10d4
+	0xbd4654
+	0xbcf959
+	0xbec8f0
+	0x9980a8
+	0x99fdfd
+	0x987bc8
+	0x987d92
+	0x97189a
+	0x758d5d49
+	0x7746d83b
+	0x7746d7c1
+
+[2026-02-16 14:21:14] === Iniciando Autograder ClassDojo (Modo DEBUG Modal) ===
+[2026-02-16 14:21:14] Leyendo archivo Excel: registro.xlsx...
+[2026-02-16 14:21:14] Leyendo hoja 'Continua'...
+[2026-02-16 14:21:14] Encabezados encontrados en fila 3.
+[2026-02-16 14:21:14] Objetivos cargados: 31 estudiantes.
+[2026-02-16 14:21:16] Navegando a: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 14:21:22] Sincronizando puntos... (Ctrl+C para detener)
+[2026-02-16 14:21:24] [PENDIENTE] Adrian Trujillo: 0 -> 4 (Faltan 4)
+[2026-02-16 14:21:26]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:21:26]   -> ¡Clic realizado!
+[2026-02-16 14:21:29] [PENDIENTE] Adrian Trujillo: 1 -> 4 (Faltan 3)
+[2026-02-16 14:21:32]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:21:32]   -> ¡Clic realizado!
+[2026-02-16 14:21:35] [PENDIENTE] Adrian Trujillo: 2 -> 4 (Faltan 2)
+[2026-02-16 14:21:37]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:21:37]   -> ¡Clic realizado!
+[2026-02-16 14:21:41] [PENDIENTE] Adrian Trujillo: 3 -> 4 (Faltan 1)
+[2026-02-16 14:21:43]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:21:43]   -> ¡Clic realizado!
+[2026-02-16 14:21:47] [PENDIENTE] Alex Melgarejo: 1 -> 7 (Faltan 6)
+[2026-02-16 14:21:49]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:21:49]   -> ¡Clic realizado!
+[2026-02-16 14:21:52] [PENDIENTE] Alex Melgarejo: 2 -> 7 (Faltan 5)
+[2026-02-16 14:21:54]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:21:54]   -> ¡Clic realizado!
+[2026-02-16 14:21:58] [PENDIENTE] Alex Melgarejo: 3 -> 7 (Faltan 4)
+[2026-02-16 14:22:00]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:00]   -> ¡Clic realizado!
+[2026-02-16 14:22:04] [PENDIENTE] Alex Melgarejo: 4 -> 7 (Faltan 3)
+[2026-02-16 14:22:06]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:06]   -> ¡Clic realizado!
+[2026-02-16 14:22:09] [PENDIENTE] Alex Melgarejo: 5 -> 7 (Faltan 2)
+[2026-02-16 14:22:11]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:11]   -> ¡Clic realizado!
+[2026-02-16 14:22:15] [PENDIENTE] Alex Melgarejo: 6 -> 7 (Faltan 1)
+[2026-02-16 14:22:17]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:17]   -> ¡Clic realizado!
+[2026-02-16 14:22:21] [PENDIENTE] Bray Huillcara: 2 -> 6 (Faltan 4)
+[2026-02-16 14:22:23]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:23]   -> ¡Clic realizado!
+[2026-02-16 14:22:26] [PENDIENTE] Bray Huillcara: 3 -> 6 (Faltan 3)
+[2026-02-16 14:22:28]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:28]   -> ¡Clic realizado!
+[2026-02-16 14:22:32] [PENDIENTE] Bray Huillcara: 4 -> 6 (Faltan 2)
+[2026-02-16 14:22:34]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:34]   -> ¡Clic realizado!
+[2026-02-16 14:22:38] [PENDIENTE] Bray Huillcara: 5 -> 6 (Faltan 1)
+[2026-02-16 14:22:40]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:40]   -> ¡Clic realizado!
+[2026-02-16 14:22:43] [PENDIENTE] Carlos Ramos: 2 -> 3 (Faltan 1)
+[2026-02-16 14:22:45]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:46]   -> ¡Clic realizado!
+[2026-02-16 14:22:49] [PENDIENTE] Christofer Vilca: 1 -> 2 (Faltan 1)
+[2026-02-16 14:22:51]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:51]   -> ¡Clic realizado!
+[2026-02-16 14:22:55] [PENDIENTE] Edwin Pérez: 2 -> 6 (Faltan 4)
+[2026-02-16 14:22:57]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:22:57]   -> ¡Clic realizado!
+[2026-02-16 14:23:01] [PENDIENTE] Edwin Pérez: 3 -> 6 (Faltan 3)
+[2026-02-16 14:23:03]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:03]   -> ¡Clic realizado!
+[2026-02-16 14:23:06] [PENDIENTE] Edwin Pérez: 4 -> 6 (Faltan 2)
+[2026-02-16 14:23:09]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:09]   -> ¡Clic realizado!
+[2026-02-16 14:23:12] [PENDIENTE] Edwin Pérez: 5 -> 6 (Faltan 1)
+[2026-02-16 14:23:14]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:14]   -> ¡Clic realizado!
+[2026-02-16 14:23:18] [PENDIENTE] Fabian Alvarez: 2 -> 8 (Faltan 6)
+[2026-02-16 14:23:20]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:20]   -> ¡Clic realizado!
+[2026-02-16 14:23:24] [PENDIENTE] Fabian Alvarez: 3 -> 8 (Faltan 5)
+[2026-02-16 14:23:26]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:26]   -> ¡Clic realizado!
+[2026-02-16 14:23:29] [PENDIENTE] Fabian Alvarez: 4 -> 8 (Faltan 4)
+[2026-02-16 14:23:31]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:31]   -> ¡Clic realizado!
+[2026-02-16 14:23:35] [PENDIENTE] Fabian Alvarez: 5 -> 8 (Faltan 3)
+[2026-02-16 14:23:37]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:37]   -> ¡Clic realizado!
+[2026-02-16 14:23:41] [PENDIENTE] Fabian Alvarez: 6 -> 8 (Faltan 2)
+[2026-02-16 14:23:43]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:43]   -> ¡Clic realizado!
+[2026-02-16 14:23:46] [PENDIENTE] Fabian Alvarez: 7 -> 8 (Faltan 1)
+[2026-02-16 14:23:49]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:49]   -> ¡Clic realizado!
+[2026-02-16 14:23:52] [PENDIENTE] Fabiola Crespo: 0 -> 2 (Faltan 2)
+[2026-02-16 14:23:54]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:23:54]   -> ¡Clic realizado!
+[2026-02-16 14:23:58] [PENDIENTE] Fabiola Crespo: 1 -> 2 (Faltan 1)
+[2026-02-16 14:24:00]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:00]   -> ¡Clic realizado!
+[2026-02-16 14:24:04] [PENDIENTE] Jair Candiotti: 2 -> 7 (Faltan 5)
+[2026-02-16 14:24:06]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:06]   -> ¡Clic realizado!
+[2026-02-16 14:24:10] [PENDIENTE] Jair Candiotti: 3 -> 7 (Faltan 4)
+[2026-02-16 14:24:12]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:12]   -> ¡Clic realizado!
+[2026-02-16 14:24:15] [PENDIENTE] Jair Candiotti: 4 -> 7 (Faltan 3)
+[2026-02-16 14:24:17]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:17]   -> ¡Clic realizado!
+[2026-02-16 14:24:21] [PENDIENTE] Jair Candiotti: 5 -> 7 (Faltan 2)
+[2026-02-16 14:24:23]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:23]   -> ¡Clic realizado!
+[2026-02-16 14:24:27] [PENDIENTE] Jair Candiotti: 6 -> 7 (Faltan 1)
+[2026-02-16 14:24:29]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:29]   -> ¡Clic realizado!
+[2026-02-16 14:24:33] [PENDIENTE] Jose Gustavo Vilca: 2 -> 4 (Faltan 2)
+[2026-02-16 14:24:35]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:35]   -> ¡Clic realizado!
+[2026-02-16 14:24:38] [PENDIENTE] Jose Gustavo Vilca: 3 -> 4 (Faltan 1)
+[2026-02-16 14:24:40]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:41]   -> ¡Clic realizado!
+[2026-02-16 14:24:44] [PENDIENTE] José Martin Abad: 2 -> 9 (Faltan 7)
+[2026-02-16 14:24:46]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:46]   -> ¡Clic realizado!
+[2026-02-16 14:24:50] [PENDIENTE] José Martin Abad: 3 -> 9 (Faltan 6)
+[2026-02-16 14:24:52]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:52]   -> ¡Clic realizado!
+[2026-02-16 14:24:56] [PENDIENTE] José Martin Abad: 4 -> 9 (Faltan 5)
+[2026-02-16 14:24:58]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:24:58]   -> ¡Clic realizado!
+[2026-02-16 14:25:01] [PENDIENTE] José Martin Abad: 5 -> 9 (Faltan 4)
+[2026-02-16 14:25:04]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:04]   -> ¡Clic realizado!
+[2026-02-16 14:25:07] [PENDIENTE] José Martin Abad: 6 -> 9 (Faltan 3)
+[2026-02-16 14:25:09]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:09]   -> ¡Clic realizado!
+[2026-02-16 14:25:13] [PENDIENTE] José Martin Abad: 7 -> 9 (Faltan 2)
+[2026-02-16 14:25:15]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:15]   -> ¡Clic realizado!
+[2026-02-16 14:25:19] [PENDIENTE] José Martin Abad: 8 -> 9 (Faltan 1)
+[2026-02-16 14:25:21]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:21]   -> ¡Clic realizado!
+[2026-02-16 14:25:25] [PENDIENTE] Larry Prado: 2 -> 7 (Faltan 5)
+[2026-02-16 14:25:27]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:27]   -> ¡Clic realizado!
+[2026-02-16 14:25:31] [PENDIENTE] Larry Prado: 3 -> 7 (Faltan 4)
+[2026-02-16 14:25:33]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:33]   -> ¡Clic realizado!
+[2026-02-16 14:25:36] [PENDIENTE] Larry Prado: 4 -> 7 (Faltan 3)
+[2026-02-16 14:25:38]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:38]   -> ¡Clic realizado!
+[2026-02-16 14:25:42] [PENDIENTE] Larry Prado: 5 -> 7 (Faltan 2)
+[2026-02-16 14:25:44]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:44]   -> ¡Clic realizado!
+[2026-02-16 14:25:48] [PENDIENTE] Larry Prado: 6 -> 7 (Faltan 1)
+[2026-02-16 14:25:50]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:50]   -> ¡Clic realizado!
+[2026-02-16 14:25:54] [PENDIENTE] Leonardo Pantoja: 2 -> 8 (Faltan 6)
+[2026-02-16 14:25:56]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:25:56]   -> ¡Clic realizado!
+[2026-02-16 14:25:59] [PENDIENTE] Leonardo Pantoja: 3 -> 8 (Faltan 5)
+[2026-02-16 14:26:02]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:02]   -> ¡Clic realizado!
+[2026-02-16 14:26:05] [PENDIENTE] Leonardo Pantoja: 4 -> 8 (Faltan 4)
+[2026-02-16 14:26:07]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:07]   -> ¡Clic realizado!
+[2026-02-16 14:26:11] [PENDIENTE] Leonardo Pantoja: 5 -> 8 (Faltan 3)
+[2026-02-16 14:26:13]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:13]   -> ¡Clic realizado!
+[2026-02-16 14:26:17] [PENDIENTE] Leonardo Pantoja: 6 -> 8 (Faltan 2)
+[2026-02-16 14:26:19]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:19]   -> ¡Clic realizado!
+[2026-02-16 14:26:23] [PENDIENTE] Leonardo Pantoja: 7 -> 8 (Faltan 1)
+[2026-02-16 14:26:25]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:25]   -> ¡Clic realizado!
+[2026-02-16 14:26:28] [PENDIENTE] Lidia Mita: 2 -> 7 (Faltan 5)
+[2026-02-16 14:26:30]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:31]   -> ¡Clic realizado!
+[2026-02-16 14:26:34] [PENDIENTE] Lidia Mita: 3 -> 7 (Faltan 4)
+[2026-02-16 14:26:36]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:36]   -> ¡Clic realizado!
+[2026-02-16 14:26:40] [PENDIENTE] Lidia Mita: 4 -> 7 (Faltan 3)
+[2026-02-16 14:26:42]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:42]   -> ¡Clic realizado!
+[2026-02-16 14:26:46] [PENDIENTE] Lidia Mita: 5 -> 7 (Faltan 2)
+[2026-02-16 14:26:48]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:48]   -> ¡Clic realizado!
+[2026-02-16 14:26:52] [PENDIENTE] Lidia Mita: 6 -> 7 (Faltan 1)
+[2026-02-16 14:26:54]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:26:54]   -> ¡Clic realizado!
+[2026-02-16 14:26:58] [PENDIENTE] Luis Ramos: 2 -> 4 (Faltan 2)
+[2026-02-16 14:27:00]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:00]   -> ¡Clic realizado!
+[2026-02-16 14:27:03] [PENDIENTE] Luis Ramos: 3 -> 4 (Faltan 1)
+[2026-02-16 14:27:06]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:06]   -> ¡Clic realizado!
+[2026-02-16 14:27:09] [PENDIENTE] Luz Huansi: 0 -> 4 (Faltan 4)
+[2026-02-16 14:27:11]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:11]   -> ¡Clic realizado!
+[2026-02-16 14:27:15] [PENDIENTE] Luz Huansi: 1 -> 4 (Faltan 3)
+[2026-02-16 14:27:17]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:17]   -> ¡Clic realizado!
+[2026-02-16 14:27:21] [PENDIENTE] Luz Huansi: 2 -> 4 (Faltan 2)
+[2026-02-16 14:27:23]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:23]   -> ¡Clic realizado!
+[2026-02-16 14:27:27] [PENDIENTE] Luz Huansi: 3 -> 4 (Faltan 1)
+[2026-02-16 14:27:29]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:29]   -> ¡Clic realizado!
+[2026-02-16 14:27:32] [PENDIENTE] Lyts Quispe: 2 -> 9 (Faltan 7)
+[2026-02-16 14:27:35]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:35]   -> ¡Clic realizado!
+[2026-02-16 14:27:38] [PENDIENTE] Lyts Quispe: 3 -> 9 (Faltan 6)
+[2026-02-16 14:27:40]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:40]   -> ¡Clic realizado!
+[2026-02-16 14:27:44] [PENDIENTE] Lyts Quispe: 4 -> 9 (Faltan 5)
+[2026-02-16 14:27:46]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:46]   -> ¡Clic realizado!
+[2026-02-16 14:27:50] [PENDIENTE] Lyts Quispe: 5 -> 9 (Faltan 4)
+[2026-02-16 14:27:52]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:52]   -> ¡Clic realizado!
+[2026-02-16 14:27:56] [PENDIENTE] Lyts Quispe: 6 -> 9 (Faltan 3)
+[2026-02-16 14:27:58]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:27:58]   -> ¡Clic realizado!
+[2026-02-16 14:28:01] [PENDIENTE] Lyts Quispe: 7 -> 9 (Faltan 2)
+[2026-02-16 14:28:04]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:04]   -> ¡Clic realizado!
+[2026-02-16 14:28:07] [PENDIENTE] Lyts Quispe: 8 -> 9 (Faltan 1)
+[2026-02-16 14:28:09]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:09]   -> ¡Clic realizado!
+[2026-02-16 14:28:13] [PENDIENTE] Omar Leon: 2 -> 9 (Faltan 7)
+[2026-02-16 14:28:15]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:15]   -> ¡Clic realizado!
+[2026-02-16 14:28:19] [PENDIENTE] Omar Leon: 3 -> 9 (Faltan 6)
+[2026-02-16 14:28:21]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:21]   -> ¡Clic realizado!
+[2026-02-16 14:28:25] [PENDIENTE] Omar Leon: 4 -> 9 (Faltan 5)
+[2026-02-16 14:28:27]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:27]   -> ¡Clic realizado!
+[2026-02-16 14:28:31] [PENDIENTE] Omar Leon: 5 -> 9 (Faltan 4)
+[2026-02-16 14:28:33]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:33]   -> ¡Clic realizado!
+[2026-02-16 14:28:36] [PENDIENTE] Omar Leon: 6 -> 9 (Faltan 3)
+[2026-02-16 14:28:38]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:39]   -> ¡Clic realizado!
+[2026-02-16 14:28:42] [PENDIENTE] Omar Leon: 7 -> 9 (Faltan 2)
+[2026-02-16 14:28:44]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:44]   -> ¡Clic realizado!
+[2026-02-16 14:28:48] [PENDIENTE] Omar Leon: 8 -> 9 (Faltan 1)
+[2026-02-16 14:28:50]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:50]   -> ¡Clic realizado!
+[2026-02-16 14:28:54] [PENDIENTE] Pablo Rojas: 0 -> 3 (Faltan 3)
+[2026-02-16 14:28:56]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:28:56]   -> ¡Clic realizado!
+[2026-02-16 14:29:00] [PENDIENTE] Pablo Rojas: 1 -> 3 (Faltan 2)
+[2026-02-16 14:29:02]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:02]   -> ¡Clic realizado!
+[2026-02-16 14:29:05] [PENDIENTE] Pablo Rojas: 2 -> 3 (Faltan 1)
+[2026-02-16 14:29:08]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:08]   -> ¡Clic realizado!
+[2026-02-16 14:29:11] [PENDIENTE] Yorch Alberto: 2 -> 6 (Faltan 4)
+[2026-02-16 14:29:13]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:13]   -> ¡Clic realizado!
+[2026-02-16 14:29:17] [PENDIENTE] Yorch Alberto: 3 -> 6 (Faltan 3)
+[2026-02-16 14:29:19]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:19]   -> ¡Clic realizado!
+[2026-02-16 14:29:23] [PENDIENTE] Yorch Alberto: 4 -> 6 (Faltan 2)
+[2026-02-16 14:29:25]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:25]   -> ¡Clic realizado!
+[2026-02-16 14:29:29] [PENDIENTE] Yorch Alberto: 5 -> 6 (Faltan 1)
+[2026-02-16 14:29:31]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:31]   -> ¡Clic realizado!
+[2026-02-16 14:29:35] [PENDIENTE] Yulia Mamani: 1 -> 6 (Faltan 5)
+[2026-02-16 14:29:37]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:37]   -> ¡Clic realizado!
+[2026-02-16 14:29:41] [PENDIENTE] Yulia Mamani: 2 -> 6 (Faltan 4)
+[2026-02-16 14:29:43]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:43]   -> ¡Clic realizado!
+[2026-02-16 14:29:47] [PENDIENTE] Yulia Mamani: 3 -> 6 (Faltan 3)
+[2026-02-16 14:29:49]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:49]   -> ¡Clic realizado!
+[2026-02-16 14:29:52] [PENDIENTE] Yulia Mamani: 4 -> 6 (Faltan 2)
+[2026-02-16 14:29:55]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:29:55]   -> ¡Clic realizado!
+[2026-02-16 14:29:58] [PENDIENTE] Yulia Mamani: 5 -> 6 (Faltan 1)
+[2026-02-16 14:30:00]   -> Encontrado skill 'Participando' (XPATH).
+[2026-02-16 14:30:00]   -> ¡Clic realizado!
+[2026-02-16 14:30:04] --- Sincronización COMPLETADA ---
+[2026-02-16 14:30:04] Cerrando sesión en 5s...

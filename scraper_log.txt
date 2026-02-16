@@ -1,0 +1,182 @@
+[2026-02-16 13:00:11] Iniciando script...
+[2026-02-16 13:00:40] Iniciando navegador Chrome...
+[2026-02-16 13:00:42] Navegando a https://home.classdojo.com/login
+[2026-02-16 13:00:43] Esperando campo de email...
+[2026-02-16 13:00:44] Error en login: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="password"]"}
+  (Session info: chrome=145.0.7632.76); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xe2f393
+	0xe2f3d4
+	0xc22090
+	0xc6c51a
+	0xc6c7bb
+	0xcae212
+	0xc8ee64
+	0xcabb23
+	0xc8ebb6
+	0xc60319
+	0xc610d4
+	0x1084654
+	0x107f959
+	0x109c8f0
+	0xe480a8
+	0xe4fdfd
+	0xe37bc8
+	0xe37d92
+	0xe2189a
+	0x758d5d49
+	0x7746d83b
+	0x7746d7c1
+
+[2026-02-16 13:01:20] Buscando primera clase en la lista...
+[2026-02-16 13:01:40] No se pudo hacer clic automático. Por favor seleccione la clase manualmente.
+[2026-02-16 13:01:55] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 13:02:05] No se encontraron estudiantes con ningún selector conocido.
+[2026-02-16 13:02:05] Error general: string indices must be integers, not 'str'
+[2026-02-16 13:02:05] Finalizando script en 5 segundos...
+[2026-02-16 13:02:49] Iniciando script...
+[2026-02-16 13:03:02] Iniciando navegador Chrome...
+[2026-02-16 13:03:05] Navegando a https://home.classdojo.com/login
+[2026-02-16 13:03:06] Esperando campo de email...
+[2026-02-16 13:03:06] Error en login: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="password"]"}
+  (Session info: chrome=145.0.7632.76); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xe2f393
+	0xe2f3d4
+	0xc22090
+	0xc6c51a
+	0xc6c7bb
+	0xcae212
+	0xc8ee64
+	0xcabb23
+	0xc8ebb6
+	0xc60319
+	0xc610d4
+	0x1084654
+	0x107f959
+	0x109c8f0
+	0xe480a8
+	0xe4fdfd
+	0xe37bc8
+	0xe37d92
+	0xe2189a
+	0x758d5d49
+	0x7746d83b
+	0x7746d7c1
+
+[2026-02-16 13:03:31] Navegando a URL específica: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 13:03:31] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 13:03:41] No se encontraron estudiantes con ningún selector conocido.
+[2026-02-16 13:03:41] Error general: string indices must be integers, not 'str'
+[2026-02-16 13:03:41] Finalizando script en 5 segundos...
+[2026-02-16 13:04:43] Iniciando script...
+[2026-02-16 13:05:02] Iniciando navegador Chrome...
+[2026-02-16 13:05:04] Navegando a https://home.classdojo.com/login
+[2026-02-16 13:05:05] Esperando campo de email...
+[2026-02-16 13:05:06] Error en login: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="password"]"}
+  (Session info: chrome=145.0.7632.76); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xe9f393
+	0xe9f3d4
+	0xc92090
+	0xcdc51a
+	0xcdc7bb
+	0xd1e212
+	0xcfee64
+	0xd1bb23
+	0xcfebb6
+	0xcd0319
+	0xcd10d4
+	0x10f4654
+	0x10ef959
+	0x110c8f0
+	0xeb80a8
+	0xebfdfd
+	0xea7bc8
+	0xea7d92
+	0xe9189a
+	0x758d5d49
+	0x7746d83b
+	0x7746d7c1
+
+[2026-02-16 13:08:37] Iniciando script v2.0 (Persistencia y Debug)...
+[2026-02-16 13:08:37] Usando perfil de Chrome en: C:\Users\Usuario\Desktop\BUSCADOR_CER\Curso_PLN\chrome_profile
+[2026-02-16 13:08:39] Navegando a la clase: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 13:08:45] Parece que necesitas iniciar sesión.
+[2026-02-16 13:08:45] Por favor, inicia sesión manualmente en la ventana del navegador que se abrió.
+[2026-02-16 13:08:45] El script esperará hasta 60 segundos a que entres a la clase...
+[2026-02-16 13:08:45] ¡Login detectado! Continuando...
+[2026-02-16 13:08:45] Redirigiendo a la URL específica de la clase...
+[2026-02-16 13:08:50] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 13:09:00] No se encontraron estudiantes con selectores estándar. Guardando HTML para debug...
+[2026-02-16 13:09:00] Guardado 'debug_page_source.html'. Por favor revisalo o envialo al soporte.
+[2026-02-16 13:09:00] Extraídos 0 estudiantes.
+[2026-02-16 13:09:00] Error general: string indices must be integers, not 'str'
+[2026-02-16 13:09:00] Traceback (most recent call last):
+  File "C:\Users\Usuario\Desktop\BUSCADOR_CER\Curso_PLN\scraper.py", line 150, in main
+    f.write(f"window.classDojoData = {json_str['students']};\n")
+                                      ~~~~~~~~^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+
+[2026-02-16 13:09:00] Finalizando script...
+[2026-02-16 13:09:20] Iniciando script v2.0 (Persistencia y Debug)...
+[2026-02-16 13:09:20] Usando perfil de Chrome en: C:\Users\Usuario\Desktop\BUSCADOR_CER\Curso_PLN\chrome_profile
+[2026-02-16 13:09:22] Navegando a la clase: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 13:09:28] Parece que necesitas iniciar sesión.
+[2026-02-16 13:09:28] Por favor, inicia sesión manualmente en la ventana del navegador que se abrió.
+[2026-02-16 13:09:28] El script esperará hasta 60 segundos a que entres a la clase...
+[2026-02-16 13:09:28] ¡Login detectado! Continuando...
+[2026-02-16 13:09:28] Redirigiendo a la URL específica de la clase...
+[2026-02-16 13:09:33] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 13:09:43] No se encontraron estudiantes con selectores estándar. Guardando HTML para debug...
+[2026-02-16 13:09:43] Guardado 'debug_page_source.html'. Por favor revisalo o envialo al soporte.
+[2026-02-16 13:09:43] Extraídos 0 estudiantes.
+[2026-02-16 13:09:43] Error general: string indices must be integers, not 'str'
+[2026-02-16 13:09:43] Traceback (most recent call last):
+  File "C:\Users\Usuario\Desktop\BUSCADOR_CER\Curso_PLN\scraper.py", line 150, in main
+    f.write(f"window.classDojoData = {json_str['students']};\n")
+                                      ~~~~~~~~^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+
+[2026-02-16 13:09:43] Finalizando script...
+[2026-02-16 13:13:18] Iniciando script v2.1 (Fix JSON & More Selectors)...
+[2026-02-16 13:13:18] Usando perfil de Chrome en: C:\Users\Usuario\Desktop\BUSCADOR_CER\Curso_PLN\chrome_profile
+[2026-02-16 13:13:21] Navegando a la clase: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 13:13:26] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 13:13:36] No se encontraron estudiantes con selectores estándar. Guardando HTML para debug...
+[2026-02-16 13:13:36] Guardado 'debug_page_source.html'.
+[2026-02-16 13:13:36] Extraídos 0 estudiantes.
+[2026-02-16 13:13:36] Datos guardados exitosamente en data.js
+[2026-02-16 13:13:36] Finalizando script...
+[2026-02-16 13:17:49] Iniciando script v3.0 (Credentials & Regex Parsing)...
+[2026-02-16 13:17:51] Navegando a: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 13:17:57] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 13:18:07] Encontrados 30 botones de estudiante.
+[2026-02-16 13:18:07] Extraídos y procesados 30 estudiantes.
+[2026-02-16 13:18:07] Datos guardados exitosamente en data.js
+[2026-02-16 13:18:07] Finalizando script...
+[2026-02-16 13:20:41] Iniciando script v3.0 (Credentials & Regex Parsing)...
+[2026-02-16 13:20:43] Navegando a: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 13:20:48] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 13:20:58] Encontrados 30 botones de estudiante.
+[2026-02-16 13:20:58] Extraídos y procesados 30 estudiantes.
+[2026-02-16 13:20:58] Datos guardados exitosamente en data.js
+[2026-02-16 13:20:58] Finalizando script...
+[2026-02-16 15:04:47] Iniciando script v3.0 (Credentials & Regex Parsing)...
+[2026-02-16 15:04:50] Navegando a: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 15:04:56] Esperando carga de estudiantes (10 segundos)...
+[2026-02-16 15:05:06] Encontrados 30 botones de estudiante.
+[2026-02-16 15:05:06] Extraídos y procesados 30 estudiantes.
+[2026-02-16 15:05:06] Datos guardados exitosamente en data.js
+[2026-02-16 15:05:06] Finalizando script...
+[2026-02-16 15:23:16] Iniciando Scraper v4.0 (Enhanced Stats)...
+[2026-02-16 15:23:16] Calculando estadísticas desde Excel...
+[2026-02-16 15:23:16] Estadísticas calculadas para 31 estudiantes.
+[2026-02-16 15:23:19] Navegando a: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-16 15:23:24] Esperando carga...
+[2026-02-16 15:23:34] Encontrados 30 estudiantes.
+[2026-02-16 15:23:34] Procesados 30 estudiantes.
+[2026-02-16 15:23:34] Datos guardados en data.js

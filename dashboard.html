@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard ClassDojo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: #00b48a;
+            /* ClassDojo Greenish color */
+        }
+
+        .btn-update {
+            background-color: #00b48a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-update:hover {
+            background-color: #009e7a;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .stats-summary {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background-color: #e6f7f3;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00b48a;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            color: #555;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .top-performer {
+            color: #e67e22;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div style="display: flex; align-items: center;">
+                <img src="LOGO_CERTUS_SUNAT.png" alt="Logo" style="height: 60px; margin-right: 20px;">
+                <div>
+                    <h1>REPORTE DE NOTAS DEL CURSO DE PENSAMIENTO LÓGICO PARA LOS NEGOCIOS 2026</h1>
+                    <p style="margin: 5px 0 0; color: #666;">Resumen de Puntos de la Clase</p>
+                </div>
+            </div>
+            <a href="index.html" style="text-decoration: none; color: #555; margin-right: 15px;">Volver al Menú</a>
+            <!-- This button can't directly run a local file for security, but we can instruct user -->
+            <button class="btn-update"
+                onclick="alert('Por favor, ejecute el archivo ACTUALIZAR_NOTAS.bat en el escritorio para obtener nuevos datos.')">🔄
+                Actualizar Datos</button>
+        </header>
+
+        <div class="stats-summary">
+            <div class="stat-box">
+                <div class="stat-value" id="totalPoints">0</div>
+                <div class="stat-label">Puntos Totales</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="avgPoints">0</div>
+                <div class="stat-label">Promedio de Clase</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" style="font-size: 1.5em;">Yorch Alberto y Edwin Pérez</div>
+                <div class="stat-label">Delegados del Salón</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px; color: #888; font-size: 0.9em;">
+            Última actualización: <span id="lastUpdated">-</span>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>Tendencia de Puntos</h3>
+                <canvas id="pointsChart"></canvas>
+            </div>
+            <div class="card">
+                <h3>Detalle por Estudiante</h3>
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <table id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>Estudiante</th>
+                                <th>Puntos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import logic file defined by scraper.py -->
+    <script src="data.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if data loaded from data.js
+            if (typeof window.classDojoData === 'undefined' || !window.classDojoData) {
+                alert("No se encontraron datos. Por favor ejecute el actualizador.");
+                return;
+            }
+
+            const data = window.classDojoData;
+
+            // 1. Calculate Stats
+            const totalPoints = data.reduce((sum, item) => sum + item.points, 0);
+            const avgPoints = data.length ? (totalPoints / data.length).toFixed(1) : 0;
+            const leader = data.length ? data.reduce((prev, current) => (prev.points > current.points) ? prev : current) : { name: '-', points: 0 };
+
+            document.getElementById('totalPoints').textContent = totalPoints;
+            document.getElementById('avgPoints').textContent = avgPoints;
+            // document.getElementById('leaderName').textContent = leader.name; // Removed leader logic, using hardcoded delegates
+
+            // Update timestamp
+            if (window.classDojoMeta && window.classDojoMeta.lastUpdated) {
+                document.getElementById('lastUpdated').textContent = window.classDojoMeta.lastUpdated;
+            } else {
+                document.getElementById('lastUpdated').textContent = "Desconocida (Datos de prueba)";
+            }
+
+            // 2. Populate Table
+            const tbody = document.querySelector('#studentsTable tbody');
+            // Sort by points descending
+            const sortedData = [...data].sort((a, b) => b.points - a.points);
+
+            sortedData.forEach((student, index) => {
+                const tr = document.createElement('tr');
+                const isTop5 = index < 5;
+
+                // Detailed tooltip on click
+                const details = student.details || { participation: '?', homework: '?', punctuality: '?' };
+                const detailText = `Participación: ${details.participation}\nTarea: ${details.homework}\nPuntualidad: ${details.punctuality}`;
+
+                tr.onclick = () => alert(`Detalles de ${student.name}:\n\n${detailText}`);
+                tr.style.cursor = 'pointer';
+                tr.title = "Clic para ver detalles";
+
+                tr.innerHTML = `
+                    <td class="${isTop5 ? 'top-performer' : ''}">${isTop5 ? '👑 ' : ''}${student.name}</td>
+                    <td><span style="background: #e6f7f3; color: #00b48a; padding: 4px 10px; border-radius: 10px; font-weight: bold;">${student.points}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // 3. Render Chart
+            const ctx = document.getElementById('pointsChart').getContext('2d');
+
+            // Color logic: Green if >= average, Red if < average
+            const bgColors = sortedData.map(d => d.points >= avgPoints ? '#4caf50' : '#f44336');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: sortedData.map(d => d.name),
+                    datasets: [{
+                        label: 'Puntos',
+                        data: sortedData.map(d => d.points),
+                        backgroundColor: bgColors,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
