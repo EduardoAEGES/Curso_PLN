@@ -116,6 +116,117 @@
             font-weight: bold;
         }
 
+        /* Podium Styles */
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 320px;
+            gap: 15px;
+            padding-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .podium-place {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            max-width: 140px;
+        }
+
+        .podium-avatars {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+
+        .podium-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #00b48a, #007bb5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .podium-avatar:hover {
+            transform: scale(1.1) translateY(-5px);
+            z-index: 10;
+        }
+
+        .avatar-tooltip {
+            visibility: hidden;
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .podium-avatar:hover .avatar-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .step-1 {
+            height: 180px;
+            background: linear-gradient(to top, #ffd700, #ffeb73);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .step-2 {
+            height: 140px;
+            background: linear-gradient(to top, #c0c0c0, #e6e6e6);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .step-3 {
+            height: 100px;
+            background: linear-gradient(to top, #cd7f32, #f4a460);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .podium-step {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4em;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .podium-points {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+            background: #e6f7f3;
+            padding: 4px 12px;
+            border-radius: 10px;
+        }
+
         /* Premium Modal Styles */
         .modal-overlay {
             display: none;
@@ -331,9 +442,25 @@
         </div>
 
         <div class="dashboard-grid">
-            <div class="card">
-                <h3>Tendencia de Puntos</h3>
-                <canvas id="pointsChart"></canvas>
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="text-align: center; margin-top: 0; color: #2c3e50;">Podio del Salón 🏆</h3>
+                <div class="podium-container">
+                    <div class="podium-place place-2">
+                        <div class="podium-avatars" id="podium2-avatars"></div>
+                        <div class="podium-step step-2">2</div>
+                        <div class="podium-points" id="podium2-points">-</div>
+                    </div>
+                    <div class="podium-place place-1">
+                        <div class="podium-avatars" id="podium1-avatars"></div>
+                        <div class="podium-step step-1">1</div>
+                        <div class="podium-points" id="podium1-points">-</div>
+                    </div>
+                    <div class="podium-place place-3">
+                        <div class="podium-avatars" id="podium3-avatars"></div>
+                        <div class="podium-step step-3">3</div>
+                        <div class="podium-points" id="podium3-points">-</div>
+                    </div>
+                </div>
             </div>
             <div class="card">
                 <h3>Detalle por Estudiante</h3>
@@ -544,14 +671,61 @@
                 document.getElementById('lastUpdated').textContent = "Desconocida (Datos de prueba)";
             }
 
-            // 2. Populate Table
-            const tbody = document.querySelector('#studentsTable tbody');
-            // Sort by points descending
-            const sortedData = [...data].sort((a, b) => b.points - a.points);
+            // 2. Podium logic (Unique Top 3 Points)
+            const sortedByPoints = [...data].sort((a, b) => b.points - a.points);
+            const uniquePoints = [...new Set(sortedByPoints.map(s => s.points))];
 
-            sortedData.forEach((student, index) => {
+            const top1Points = uniquePoints[0] || -1;
+            const top2Points = uniquePoints[1] || -1;
+            const top3Points = uniquePoints[2] || -1;
+
+            function populatePodium(placeNum, pointsVal) {
+                const avatarsContainer = document.getElementById(`podium${placeNum}-avatars`);
+                const pointsContainer = document.getElementById(`podium${placeNum}-points`);
+
+                if (pointsVal === -1) {
+                    pointsContainer.textContent = "-";
+                    return;
+                }
+
+                pointsContainer.textContent = `${pointsVal} pts`;
+
+                const winners = sortedByPoints.filter(s => s.points === pointsVal);
+                winners.forEach(w => {
+                    const avatar = document.createElement('div');
+                    avatar.className = 'podium-avatar';
+                    avatar.textContent = w.name.charAt(0).toUpperCase() + (w.name.split(' ')[1] ? w.name.split(' ')[1].charAt(0).toUpperCase() : '');
+                    avatar.onclick = () => showStudentDetails(w);
+
+                    const tooltip = document.createElement('span');
+                    tooltip.className = 'avatar-tooltip';
+                    tooltip.textContent = w.name;
+                    avatar.appendChild(tooltip);
+
+                    avatarsContainer.appendChild(avatar);
+                });
+            }
+
+            populatePodium(1, top1Points);
+            populatePodium(2, top2Points);
+            populatePodium(3, top3Points);
+
+            // 3. Populate Table (Sorted Alphabetically)
+            const tbody = document.querySelector('#studentsTable tbody');
+            const sortedAlphabetically = [...data].sort((a, b) => a.name.localeCompare(b.name));
+
+            sortedAlphabetically.forEach((student) => {
                 const tr = document.createElement('tr');
-                const isTop5 = index < 5;
+
+                const isTop1 = student.points === top1Points && student.points > 0;
+                const isTop2 = student.points === top2Points && student.points > 0;
+                const isTop3 = student.points === top3Points && student.points > 0;
+                const isPodium = isTop1 || isTop2 || isTop3;
+
+                let medal = '';
+                if (isTop1) medal = '🥇 ';
+                else if (isTop2) medal = '🥈 ';
+                else if (isTop3) medal = '🥉 ';
 
                 // Tr trigger for modal
                 tr.onclick = () => showStudentDetails(student);
@@ -559,42 +733,10 @@
                 tr.title = "Clic para ver detalle de notas";
 
                 tr.innerHTML = `
-                    <td class="${isTop5 ? 'top-performer' : ''}">${isTop5 ? '👑 ' : ''}${student.name}</td>
+                    <td class="${isPodium ? 'top-performer' : ''}">${medal}${student.name}</td>
                     <td><span style="background: #e6f7f3; color: #00b48a; padding: 4px 10px; border-radius: 10px; font-weight: bold;">${student.points}</span></td>
                 `;
                 tbody.appendChild(tr);
-            });
-
-            // 3. Render Chart
-            const ctx = document.getElementById('pointsChart').getContext('2d');
-
-            // Color logic: Green if >= average, Red if < average
-            const bgColors = sortedData.map(d => d.points >= avgPoints ? '#4caf50' : '#f44336');
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: sortedData.map(d => d.name),
-                    datasets: [{
-                        label: 'Puntos',
-                        data: sortedData.map(d => d.points),
-                        backgroundColor: bgColors,
-                        borderRadius: 5
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
             });
         });
     </script>
