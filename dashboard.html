@@ -119,73 +119,176 @@
             font-weight: bold;
         }
 
-        /* Modal Styles */
+        /* Premium Modal Styles */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal-content {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
+            background: linear-gradient(145deg, #ffffff, #f0f2f5);
+            padding: 30px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 550px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 180, 138, 0.1);
             position: relative;
-            animation: slideUp 0.3s;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
         @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(40px) scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 15px;
+        }
+
+        .student-profile-header {
+            display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0f2f5;
-            padding-bottom: 10px;
+            gap: 15px;
+        }
+
+        .student-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00b48a, #007bb5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 180, 138, 0.3);
         }
 
         .modal-header h2 {
             margin: 0;
-            color: #333;
-            font-size: 1.5em;
+            color: #2c3e50;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+
+        .modal-header p {
+            margin: 5px 0 0 0;
+            color: #7f8c8d;
+            font-size: 0.9em;
         }
 
         .close-btn {
-            background: none;
+            background: #f1f2f6;
             border: none;
-            font-size: 2em;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.5em;
             cursor: pointer;
-            color: #999;
-            line-height: 1;
-            padding: 0;
-            transition: color 0.3s;
+            color: #747d8c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
         }
 
         .close-btn:hover {
-            color: #f44336;
+            background: #ff4757;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .modal-stat-card {
+            background: white;
+            padding: 15px 10px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f0f2f5;
+            transition: transform 0.2s;
+        }
+
+        .modal-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .modal-stat-value {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .modal-stat-label {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Color classes for numbers */
+        .color-punctuality {
+            color: #ff9f43;
+        }
+
+        .color-participation {
+            color: #2e86de;
+        }
+
+        .color-homework {
+            color: #10ac84;
         }
 
         .modal-body {
             position: relative;
-            height: 300px;
+            height: 250px;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f0f2f5;
         }
     </style>
 </head>
@@ -255,17 +358,41 @@
     <div class="modal-overlay" id="studentModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalStudentName">Detalles del Estudiante</h2>
+                <div class="student-profile-header">
+                    <div class="student-avatar" id="modalStudentAvatar">?</div>
+                    <div>
+                        <h2 id="modalStudentName">Cargando...</h2>
+                        <p id="modalStudentTotal">Total: 0 pts</p>
+                    </div>
+                </div>
                 <button class="close-btn" onclick="closeStudentModal()">&times;</button>
             </div>
+
+            <div class="modal-stats-grid">
+                <div class="modal-stat-card">
+                    <div class="modal-stat-value color-punctuality" id="valPunctuality">0</div>
+                    <div class="modal-stat-label">Puntualidad</div>
+                </div>
+                <div class="modal-stat-card">
+                    <div class="modal-stat-value color-participation" id="valParticipation">0</div>
+                    <div class="modal-stat-label">Participación</div>
+                </div>
+                <div class="modal-stat-card">
+                    <div class="modal-stat-value color-homework" id="valHomework">0</div>
+                    <div class="modal-stat-label">Tarea</div>
+                </div>
+            </div>
+
             <div class="modal-body">
                 <canvas id="detailChart"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- Import logic file defined by scraper.py -->
-    <script src="data.js"></script>
+    <!-- Import logic file defined by scraper.py with cache buster -->
+    <script>
+        document.write('<script src="data.js?v=' + new Date().getTime() + '"><\/script>');
+    </script>
 
     <script>
         let detailChartInstance = null;
@@ -276,55 +403,106 @@
 
         function showStudentDetails(student) {
             const modal = document.getElementById('studentModal');
-            document.getElementById('modalStudentName').textContent = `Detalles de ${student.name}`;
-            
+            document.getElementById('modalStudentName').textContent = student.name;
+            document.getElementById('modalStudentAvatar').textContent = student.name.charAt(0).toUpperCase();
+            document.getElementById('modalStudentTotal').textContent = `Total: ${student.points} pts`;
+
             const details = student.details || { participation: 0, homework: 0, punctuality: 0 };
-            
+
+            const punctuality = parseInt(details.punctuality) || 0;
+            const participation = parseInt(details.participation) || 0;
+            const homework = parseInt(details.homework) || 0;
+
+            // Animate numbers
+            animateValue("valPunctuality", 0, punctuality, 1000);
+            animateValue("valParticipation", 0, participation, 1000);
+            animateValue("valHomework", 0, homework, 1000);
+
             const ctx = document.getElementById('detailChart').getContext('2d');
-            
+
             if (detailChartInstance) {
                 detailChartInstance.destroy();
             }
-            
+
             detailChartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['Puntualidad', 'Participación', 'Tarea'],
                     datasets: [{
                         label: 'Puntos Acumulados',
-                        data: [
-                            parseInt(details.punctuality) || 0, 
-                            parseInt(details.participation) || 0, 
-                            parseInt(details.homework) || 0
-                        ],
+                        data: [punctuality, participation, homework],
                         backgroundColor: [
-                            '#ff9800', // Naranja para puntualidad
-                            '#2196f3', // Azul para participación
-                            '#4caf50'  // Verde para tarea
+                            'rgba(255, 159, 67, 0.8)', // Naranja
+                            'rgba(46, 134, 222, 0.8)', // Azul
+                            'rgba(16, 172, 132, 0.8)'  // Verde
                         ],
-                        borderRadius: 5
+                        borderColor: [
+                            '#ff9f43',
+                            '#2e86de',
+                            '#10ac84'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        barPercentage: 0.6
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart'
+                    },
                     scales: {
                         y: {
                             beginAtZero: true,
-                            ticks: { stepSize: 1 }
+                            ticks: { stepSize: 1, font: { family: "'Segoe UI', sans-serif" } },
+                            grid: { borderDash: [5, 5] }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: "'Segoe UI', sans-serif", weight: 'bold' } }
                         }
                     },
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            padding: 12,
+                            titleFont: { size: 14, family: "'Segoe UI', sans-serif" },
+                            bodyFont: { size: 14, family: "'Segoe UI', sans-serif" },
+                            cornerRadius: 8,
+                            displayColors: false
+                        }
                     }
                 }
             });
-            
+
             modal.style.display = 'flex';
         }
 
+        // Helper function to animate numbers counting up
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if (end === 0) { obj.textContent = "0"; return; }
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // easeOutQuad
+                const easeOut = progress * (2 - progress);
+                obj.textContent = Math.floor(easeOut * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    obj.textContent = end;
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
         // Cerrar modal al hacer clic afuera
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const modal = document.getElementById('studentModal');
             if (event.target === modal) {
                 closeStudentModal();
