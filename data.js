@@ -1,7 +1,7 @@
 window.classDojoData = [
     {
         "name": "Adrian Trujillo",
-        "points": 4,
+        "points": 7,
         "details": {
             "participation": 2,
             "homework": 1,
@@ -10,7 +10,7 @@ window.classDojoData = [
     },
     {
         "name": "Alex Melgarejo",
-        "points": 7,
+        "points": 14,
         "details": {
             "participation": 5,
             "homework": 1,
@@ -19,7 +19,7 @@ window.classDojoData = [
     },
     {
         "name": "Bray Huillcara",
-        "points": 6,
+        "points": 14,
         "details": {
             "participation": 6,
             "homework": 0,
@@ -28,7 +28,7 @@ window.classDojoData = [
     },
     {
         "name": "Bryan Alvares",
-        "points": 0,
+        "points": 1,
         "details": {
             "participation": 0,
             "homework": 0,
@@ -37,7 +37,7 @@ window.classDojoData = [
     },
     {
         "name": "Carlos Ramos",
-        "points": 3,
+        "points": 5,
         "details": {
             "participation": 3,
             "homework": 0,
@@ -46,7 +46,7 @@ window.classDojoData = [
     },
     {
         "name": "Christofer Vilca",
-        "points": 2,
+        "points": 3,
         "details": {
             "participation": 2,
             "homework": 0,
@@ -55,7 +55,7 @@ window.classDojoData = [
     },
     {
         "name": "Edwin Pérez",
-        "points": 6,
+        "points": 13,
         "details": {
             "participation": 6,
             "homework": 0,
@@ -82,7 +82,7 @@ window.classDojoData = [
     },
     {
         "name": "Fabian Alvarez",
-        "points": 8,
+        "points": 9,
         "details": {
             "participation": 6,
             "homework": 1,
@@ -127,7 +127,7 @@ window.classDojoData = [
     },
     {
         "name": "Jair Candiotti",
-        "points": 7,
+        "points": 16,
         "details": {
             "participation": 4,
             "homework": 2,
@@ -145,7 +145,7 @@ window.classDojoData = [
     },
     {
         "name": "Jose Gustavo Vilca",
-        "points": 4,
+        "points": 6,
         "details": {
             "participation": 4,
             "homework": 0,
@@ -154,7 +154,7 @@ window.classDojoData = [
     },
     {
         "name": "José Martin Abad",
-        "points": 9,
+        "points": 15,
         "details": {
             "participation": 6,
             "homework": 2,
@@ -163,7 +163,7 @@ window.classDojoData = [
     },
     {
         "name": "Larry Prado",
-        "points": 7,
+        "points": 10,
         "details": {
             "participation": 4,
             "homework": 2,
@@ -172,7 +172,7 @@ window.classDojoData = [
     },
     {
         "name": "Leonardo Pantoja",
-        "points": 8,
+        "points": 15,
         "details": {
             "participation": 6,
             "homework": 1,
@@ -181,7 +181,7 @@ window.classDojoData = [
     },
     {
         "name": "Lidia Mita",
-        "points": 7,
+        "points": 16,
         "details": {
             "participation": 6,
             "homework": 1,
@@ -199,7 +199,7 @@ window.classDojoData = [
     },
     {
         "name": "Luz Huansi",
-        "points": 4,
+        "points": 7,
         "details": {
             "participation": 3,
             "homework": 0,
@@ -208,7 +208,7 @@ window.classDojoData = [
     },
     {
         "name": "Lyts Quispe",
-        "points": 9,
+        "points": 18,
         "details": {
             "participation": 6,
             "homework": 2,
@@ -226,7 +226,7 @@ window.classDojoData = [
     },
     {
         "name": "Omar Leon",
-        "points": 9,
+        "points": 15,
         "details": {
             "participation": 6,
             "homework": 2,
@@ -235,7 +235,7 @@ window.classDojoData = [
     },
     {
         "name": "Pablo Rojas",
-        "points": 3,
+        "points": 11,
         "details": {
             "participation": 2,
             "homework": 1,
@@ -253,7 +253,7 @@ window.classDojoData = [
     },
     {
         "name": "Yorch Alberto",
-        "points": 6,
+        "points": 7,
         "details": {
             "participation": 4,
             "homework": 2,
@@ -262,7 +262,7 @@ window.classDojoData = [
     },
     {
         "name": "Yulia Mamani",
-        "points": 6,
+        "points": 12,
         "details": {
             "participation": 3,
             "homework": 2,
@@ -270,4 +270,4 @@ window.classDojoData = [
         }
     }
 ];
-window.classDojoMeta = { 'lastUpdated': '16/02/2026 15:23:34' };
+window.classDojoMeta = { 'lastUpdated': '22/02/2026 13:04:15' };
