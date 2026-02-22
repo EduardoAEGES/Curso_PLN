@@ -37,20 +37,17 @@
             /* ClassDojo Greenish color */
         }
 
-        .btn-update {
-            background-color: #00b48a;
+        .docente-label {
+            background: linear-gradient(135deg, #00b48a, #007bb5);
             color: white;
-            border: none;
             padding: 10px 20px;
             border-radius: 20px;
-            cursor: pointer;
-            font-size: 1em;
+            font-size: 1.1em;
             font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .btn-update:hover {
-            background-color: #009e7a;
+            box-shadow: 0 4px 10px rgba(0, 180, 138, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .dashboard-grid {
@@ -304,11 +301,14 @@
                     <p style="margin: 5px 0 0; color: #666;">Resumen de Puntos de la Clase</p>
                 </div>
             </div>
-            <a href="index.html" style="text-decoration: none; color: #555; margin-right: 15px;">Volver al Menú</a>
-            <!-- This button can't directly run a local file for security, but we can instruct user -->
-            <button class="btn-update"
-                onclick="alert('Por favor, ejecute el archivo ACTUALIZAR_NOTAS.bat en el escritorio para obtener nuevos datos.')">🔄
-                Actualizar Datos</button>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="#" onclick="checkPassword(event)"
+                    style="text-decoration: none; color: #555; cursor: pointer; font-weight: 600; padding: 8px 15px; border-radius: 8px; transition: background 0.3s;">⬅
+                    Volver al Menú</a>
+                <div class="docente-label">
+                    👨‍🏫 Docente: Eduardo Mamani Roque
+                </div>
+            </div>
         </header>
 
         <div class="stats-summary">
@@ -396,6 +396,16 @@
 
     <script>
         let detailChartInstance = null;
+
+        function checkPassword(e) {
+            e.preventDefault();
+            const pwd = prompt("Ingrese la contraseña para volver al menú principal:");
+            if (pwd === "daluvis666") {
+                window.location.href = "index.html";
+            } else if (pwd !== null) {
+                alert("Contraseña incorrecta. Acceso denegado.");
+            }
+        }
 
         function closeStudentModal() {
             document.getElementById('studentModal').style.display = 'none';
