@@ -18,7 +18,7 @@ CHROME_PROFILE_PATH = os.path.join(os.getcwd(), "chrome_profile")
 CLASS_URL = "https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points" 
 EMAIL = "edu.mamaniroque@gmail.com"
 PASSWORD = "Conta-2025"
-EXCEL_FILE = "registro.xlsx"
+EXCEL_URL = "https://docs.google.com/spreadsheets/d/1TaNYdspym_FSn-yY7HaAFPRxSvr2Ubmp/export?format=xlsx"
 
 def log(message):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -35,21 +35,17 @@ def normalize_name(name):
     return s
 
 def get_excel_stats():
-    """Reads Excel and returns a dict: { normalized_name: { 'participation': X, 'homework': Y, 'punctuality': Z } }"""
-    log("Calculando estadísticas desde Excel...")
+    """Reads Excel and returns a dict: { normalized_name: { 'participation': X, 'homework': Y, 'punctuality': Z, 'total': W } }"""
+    log("Descargando y calculando estadísticas desde Google Sheets...")
     try:
-        if not os.path.exists(EXCEL_FILE):
-            log("ADVERTENCIA: No se encontró registro.xlsx")
-            return {}
-
-        df = pd.read_excel(EXCEL_FILE, sheet_name="Continua", header=None)
+        df = pd.read_excel(EXCEL_URL, sheet_name="Continua", header=None)
         
         # Find Header Row
         header_row_idx = -1
         name_col_idx = -1
+        total_col_idx = -1
         
         # Identify columns indices for each category
-        # Since headers repeat, we need list of indices
         part_indices = []
         task_indices = []
         punct_indices = []
@@ -60,13 +56,14 @@ def get_excel_stats():
                 header_row_idx = r
                 for c, val in enumerate(row_vals):
                     if "Usuario Classdojo" in val: name_col_idx = c
+                    elif "Acumulado" in val: total_col_idx = c
                     elif "Participación" in val: part_indices.append(c)
                     elif "Tarea" in val: task_indices.append(c)
                     elif "Puntualidad" in val: punct_indices.append(c)
                 break
         
         if header_row_idx == -1:
-            log("No se encontró la fila de encabezados en Excel.")
+            log("No se encontró la fila de encabezados en el Google Sheet.")
             return {}
             
         stats = {}
@@ -84,22 +81,32 @@ def get_excel_stats():
                 for c in indices:
                     try:
                         val = row.iloc[c]
-                        if pd.notna(val):
+                        if pd.notna(val) and str(val).strip() != "":
                             total += float(val)
                     except: pass
                 return int(total)
+            
+            # Extract total if available
+            total_points = 0
+            if total_col_idx != -1:
+                 val = row.iloc[total_col_idx]
+                 if pd.notna(val) and str(val).strip() != "":
+                     try:
+                         total_points = int(float(val))
+                     except: pass
 
             stats[norm_name] = {
                 "participation": sum_cols(part_indices),
                 "homework": sum_cols(task_indices),
-                "punctuality": sum_cols(punct_indices)
+                "punctuality": sum_cols(punct_indices),
+                "total": total_points
             }
             
-        log(f"Estadísticas calculadas para {len(stats)} estudiantes.")
+        log(f"Estadísticas calculadas para {len(stats)} estudiantes desde Sheets.")
         return stats
 
     except Exception as e:
-        log(f"Error procesando Excel: {e}")
+        log(f"Error procesando el Google Sheet: {e}")
         return {}
 
 def main():
@@ -191,10 +198,17 @@ def main():
                                 details = v
                                 break
                     
+                    # Usa el "Acumulado" del Excel como points totales reales, en lugar del leido en classdojo
+                    actual_points = details.get("total", points) if details.get("total", 0) > 0 else points
+                    
                     students_data.append({
                         "name": name, 
-                        "points": points,
-                        "details": details 
+                        "points": actual_points,
+                        "details": {
+                            "participation": details.get("participation", 0),
+                            "homework": details.get("homework", 0),
+                            "punctuality": details.get("punctuality", 0)
+                        }
                     })
                     
             except Exception as e:

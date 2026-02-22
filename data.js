@@ -3,27 +3,27 @@ window.classDojoData = [
         "name": "Adrian Trujillo",
         "points": 7,
         "details": {
-            "participation": 2,
+            "participation": 4,
             "homework": 1,
-            "punctuality": 1
+            "punctuality": 2
         }
     },
     {
         "name": "Alex Melgarejo",
         "points": 14,
         "details": {
-            "participation": 5,
-            "homework": 1,
-            "punctuality": 1
+            "participation": 7,
+            "homework": 3,
+            "punctuality": 4
         }
     },
     {
         "name": "Bray Huillcara",
         "points": 14,
         "details": {
-            "participation": 6,
-            "homework": 0,
-            "punctuality": 0
+            "participation": 8,
+            "homework": 3,
+            "punctuality": 3
         }
     },
     {
@@ -32,15 +32,15 @@ window.classDojoData = [
         "details": {
             "participation": 0,
             "homework": 0,
-            "punctuality": 0
+            "punctuality": 1
         }
     },
     {
         "name": "Carlos Ramos",
         "points": 5,
         "details": {
-            "participation": 3,
-            "homework": 0,
+            "participation": 4,
+            "homework": 1,
             "punctuality": 0
         }
     },
@@ -48,7 +48,7 @@ window.classDojoData = [
         "name": "Christofer Vilca",
         "points": 3,
         "details": {
-            "participation": 2,
+            "participation": 3,
             "homework": 0,
             "punctuality": 0
         }
@@ -57,9 +57,9 @@ window.classDojoData = [
         "name": "Edwin Pérez",
         "points": 13,
         "details": {
-            "participation": 6,
-            "homework": 0,
-            "punctuality": 0
+            "participation": 8,
+            "homework": 2,
+            "punctuality": 3
         }
     },
     {
@@ -85,7 +85,7 @@ window.classDojoData = [
         "points": 9,
         "details": {
             "participation": 6,
-            "homework": 1,
+            "homework": 2,
             "punctuality": 1
         }
     },
@@ -129,9 +129,9 @@ window.classDojoData = [
         "name": "Jair Candiotti",
         "points": 16,
         "details": {
-            "participation": 4,
-            "homework": 2,
-            "punctuality": 1
+            "participation": 6,
+            "homework": 7,
+            "punctuality": 3
         }
     },
     {
@@ -147,26 +147,26 @@ window.classDojoData = [
         "name": "Jose Gustavo Vilca",
         "points": 6,
         "details": {
-            "participation": 4,
+            "participation": 5,
             "homework": 0,
-            "punctuality": 0
+            "punctuality": 1
         }
     },
     {
         "name": "José Martin Abad",
         "points": 15,
         "details": {
-            "participation": 6,
-            "homework": 2,
-            "punctuality": 1
+            "participation": 8,
+            "homework": 4,
+            "punctuality": 3
         }
     },
     {
         "name": "Larry Prado",
         "points": 10,
         "details": {
-            "participation": 4,
-            "homework": 2,
+            "participation": 6,
+            "homework": 3,
             "punctuality": 1
         }
     },
@@ -174,18 +174,18 @@ window.classDojoData = [
         "name": "Leonardo Pantoja",
         "points": 15,
         "details": {
-            "participation": 6,
-            "homework": 1,
-            "punctuality": 1
+            "participation": 8,
+            "homework": 3,
+            "punctuality": 4
         }
     },
     {
         "name": "Lidia Mita",
         "points": 16,
         "details": {
-            "participation": 6,
-            "homework": 1,
-            "punctuality": 0
+            "participation": 8,
+            "homework": 4,
+            "punctuality": 4
         }
     },
     {
@@ -201,8 +201,8 @@ window.classDojoData = [
         "name": "Luz Huansi",
         "points": 7,
         "details": {
-            "participation": 3,
-            "homework": 0,
+            "participation": 4,
+            "homework": 2,
             "punctuality": 1
         }
     },
@@ -210,17 +210,17 @@ window.classDojoData = [
         "name": "Lyts Quispe",
         "points": 18,
         "details": {
-            "participation": 6,
-            "homework": 2,
-            "punctuality": 1
+            "participation": 8,
+            "homework": 6,
+            "punctuality": 4
         }
     },
     {
         "name": "Mario Prudencio",
-        "points": 0,
+        "points": 1,
         "details": {
             "participation": 0,
-            "homework": 0,
+            "homework": 1,
             "punctuality": 0
         }
     },
@@ -228,18 +228,18 @@ window.classDojoData = [
         "name": "Omar Leon",
         "points": 15,
         "details": {
-            "participation": 6,
-            "homework": 2,
-            "punctuality": 1
+            "participation": 8,
+            "homework": 4,
+            "punctuality": 3
         }
     },
     {
         "name": "Pablo Rojas",
         "points": 11,
         "details": {
-            "participation": 2,
-            "homework": 1,
-            "punctuality": 0
+            "participation": 3,
+            "homework": 5,
+            "punctuality": 3
         }
     },
     {
@@ -257,17 +257,17 @@ window.classDojoData = [
         "details": {
             "participation": 4,
             "homework": 2,
-            "punctuality": 0
+            "punctuality": 1
         }
     },
     {
         "name": "Yulia Mamani",
         "points": 12,
         "details": {
-            "participation": 3,
-            "homework": 2,
-            "punctuality": 1
+            "participation": 5,
+            "homework": 3,
+            "punctuality": 4
         }
     }
 ];
-window.classDojoMeta = { 'lastUpdated': '22/02/2026 13:06:06' };
+window.classDojoMeta = { 'lastUpdated': '22/02/2026 13:32:34' };

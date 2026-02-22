@@ -207,3 +207,11 @@ TypeError: string indices must be integers, not 'str'
 [2026-02-22 13:06:06] Encontrados 30 estudiantes.
 [2026-02-22 13:06:06] Procesados 30 estudiantes.
 [2026-02-22 13:06:06] Datos guardados en data.js
+[2026-02-22 13:32:08] Iniciando Scraper v4.0 (Enhanced Stats)...
+[2026-02-22 13:32:08] Descargando y calculando estadísticas desde Google Sheets...
+[2026-02-22 13:32:15] Estadísticas calculadas para 31 estudiantes desde Sheets.
+[2026-02-22 13:32:17] Navegando a: https://teach.classdojo.com/#/classes/697d7ed028ab93052f78c907/points
+[2026-02-22 13:32:24] Esperando carga...
+[2026-02-22 13:32:34] Encontrados 30 estudiantes.
+[2026-02-22 13:32:34] Procesados 30 estudiantes.
+[2026-02-22 13:32:34] Datos guardados en data.js
