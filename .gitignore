@@ -1,0 +1,15 @@
+# User Data
+chrome_profile/
+
+# Student Data
+registro.xlsx
+data.js
+
+# Logs
+*.log
+scraper_log.txt
+autograder_log.txt
+
+# Python
+__pycache__/
+*.pyc

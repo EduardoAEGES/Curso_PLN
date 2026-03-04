@@ -391,12 +391,120 @@
 
         .modal-body {
             position: relative;
-            height: 250px;
             background: white;
             border-radius: 12px;
             padding: 15px;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
             border: 1px solid #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .chart-container {
+            height: 250px;
+        }
+
+        .detailed-grades {
+            display: none;
+            /* Hidden by default */
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 10px;
+            border-top: 2px dashed #eee;
+            padding-top: 20px;
+        }
+
+        .auth-locked-content {
+            text-align: center;
+            padding: 20px;
+            background: #fcfcfc;
+            border: 1px dashed #ccc;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .grade-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        .grade-section h4 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #00b48a;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+
+        .grade-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .grade-value {
+            font-weight: bold;
+        }
+
+        .no-realizada {
+            color: #ff4757;
+            background: #ffe0e3;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        /* DNI Prompt Styles */
+        .dni-prompt-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dni-prompt-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .dni-input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1.2em;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .dni-btn {
+            background: #00b48a;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
@@ -428,8 +536,16 @@
                 <div class="stat-label">Puntos Totales</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value" id="avgPoints">0</div>
-                <div class="stat-label">Promedio de Clase</div>
+                <div class="stat-value color-punctuality" id="avgPunctuality">0</div>
+                <div class="stat-label">Promedio Puntualidad</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value color-participation" id="avgParticipation">0</div>
+                <div class="stat-label">Promedio Participación</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value color-homework" id="avgHomework">0</div>
+                <div class="stat-label">Promedio Tarea</div>
             </div>
             <div class="stat-box">
                 <div class="stat-value" style="font-size: 1.5em;">Yorch Alberto y Edwin Pérez</div>
@@ -511,8 +627,57 @@
             </div>
 
             <div class="modal-body">
-                <canvas id="detailChart"></canvas>
+                <div class="chart-container">
+                    <canvas id="detailChart"></canvas>
+                </div>
+
+                <div class="auth-locked-content" id="authPromptSection">
+                    <p style="color: #666; margin-bottom: 10px;">Las notas de participación (P1/P2) y evaluaciones están
+                        protegidas.</p>
+                    <button class="dni-btn" style="width: auto;" onclick="openDniPrompt()">Ver Notas Detalladas</button>
+                </div>
+
+                <div class="detailed-grades" id="detailedGradesSection">
+                    <div class="grade-section">
+                        <h4>Actividades Puntos</h4>
+                        <div class="grade-row">
+                            <span>Participación 1 (P1):</span>
+                            <span class="grade-value" id="valP1">0</span>
+                        </div>
+                        <div class="grade-row">
+                            <span>Participación 2 (P2):</span>
+                            <span class="grade-value" id="valP2">0</span>
+                        </div>
+                    </div>
+                    <div class="grade-section">
+                        <h4>Evaluaciones</h4>
+                        <div class="grade-row">
+                            <span>Evaluación 1:</span>
+                            <span class="grade-value" id="valEval1">0</span>
+                        </div>
+                        <div class="grade-row">
+                            <span>Evaluación 2:</span>
+                            <span class="grade-value" id="valEval2">0</span>
+                        </div>
+                        <div class="grade-row">
+                            <span>Evaluación 3:</span>
+                            <span class="grade-value" id="valEval3">0</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- DNI Auth Prompt -->
+    <div class="dni-prompt-overlay" id="dniPrompt">
+        <div class="dni-prompt-card">
+            <h3 style="margin-top:0">Verificación de DNI</h3>
+            <p style="color: #666; font-size: 0.9em;">Ingrese su DNI para ver sus notas detalladas</p>
+            <input type="password" class="dni-input" id="dniInput" maxlength="8" placeholder="********">
+            <button class="dni-btn" onclick="verifyDni()">Ver mis notas</button>
+            <button class="dni-btn" style="background:#f1f2f6; color:#555; margin-top:10px"
+                onclick="closeDniPrompt()">Cancelar</button>
         </div>
     </div>
 
@@ -538,22 +703,69 @@
             document.getElementById('studentModal').style.display = 'none';
         }
 
+        let currentStudentDetails = null;
+
+        function closeDniPrompt() {
+            document.getElementById('dniPrompt').style.display = 'none';
+            document.getElementById('dniInput').value = '';
+        }
+
+        function openDniPrompt() {
+            document.getElementById('dniPrompt').style.display = 'flex';
+            document.getElementById('dniInput').focus();
+        }
+
+        function verifyDni() {
+            const input = document.getElementById('dniInput').value;
+            if (input === currentStudentDetails.dni) {
+                closeDniPrompt();
+                document.getElementById('authPromptSection').style.display = 'none';
+                document.getElementById('detailedGradesSection').style.display = 'grid';
+            } else {
+                alert("DNI incorrecto. Solo puedes ver tus propias notas.");
+            }
+        }
+
         function showStudentDetails(student) {
+            currentStudentDetails = student;
             const modal = document.getElementById('studentModal');
+
+            // Reset visibility
+            document.getElementById('authPromptSection').style.display = 'block';
+            document.getElementById('detailedGradesSection').style.display = 'none';
+
             document.getElementById('modalStudentName').textContent = student.name;
             document.getElementById('modalStudentAvatar').textContent = student.name.charAt(0).toUpperCase();
             document.getElementById('modalStudentTotal').textContent = `Total: ${student.points} pts`;
 
-            const details = student.details || { participation: 0, homework: 0, punctuality: 0 };
+            const details = student.details || { participation: 0, homework: 0, punctuality: 0, p1: 0, p2: 0, eval1: 0, eval2: 0, eval3: 0 };
 
             const punctuality = parseInt(details.punctuality) || 0;
             const participation = parseInt(details.participation) || 0;
             const homework = parseInt(details.homework) || 0;
 
-            // Animate numbers
+            // Animate primary numbers
             animateValue("valPunctuality", 0, punctuality, 1000);
             animateValue("valParticipation", 0, participation, 1000);
             animateValue("valHomework", 0, homework, 1000);
+
+            // Detailed grades with 'No realizada' logic
+            function formatGrade(id, val) {
+                const el = document.getElementById(id);
+                if (parseInt(val) <= 1) {
+                    el.innerHTML = `<span class="no-realizada">No realizada</span>`;
+                } else {
+                    el.textContent = val;
+                }
+            }
+
+            formatGrade('valP1', details.p1);
+            formatGrade('valP2', details.p2);
+            formatGrade('valEval1', details.eval1);
+            formatGrade('valEval2', details.eval2);
+            formatGrade('valEval3', details.eval3);
+
+            modal.style.display = 'flex';
 
             const ctx = document.getElementById('detailChart').getContext('2d');
 
@@ -657,12 +869,25 @@
 
             // 1. Calculate Stats
             const totalPoints = data.reduce((sum, item) => sum + item.points, 0);
-            const avgPoints = data.length ? (totalPoints / data.length).toFixed(1) : 0;
-            const leader = data.length ? data.reduce((prev, current) => (prev.points > current.points) ? prev : current) : { name: '-', points: 0 };
+
+            // Calculate category averages excluding zeros
+            const filterPu = data.map(i => i.details.punctuality || 0).filter(v => v > 0);
+            const filterPa = data.map(i => i.details.participation || 0).filter(v => v > 0);
+            const filterT = data.map(i => i.details.homework || 0).filter(v => v > 0);
+
+            const avgPu = filterPu.length ? (filterPu.reduce((a, b) => a + b, 0) / filterPu.length) : 0;
+            const avgPa = filterPa.length ? (filterPa.reduce((a, b) => a + b, 0) / filterPa.length) : 0;
+            const avgT = filterT.length ? (filterT.reduce((a, b) => a + b, 0) / filterT.length) : 0;
+
+
+            const avgClass = ((avgPu + avgPa + avgT) / 3).toFixed(1);
 
             document.getElementById('totalPoints').textContent = totalPoints;
-            document.getElementById('avgPoints').textContent = avgPoints;
+            document.getElementById('avgPunctuality').textContent = avgPu.toFixed(1);
+            document.getElementById('avgParticipation').textContent = avgPa.toFixed(1);
+            document.getElementById('avgHomework').textContent = avgT.toFixed(1);
             // document.getElementById('leaderName').textContent = leader.name; // Removed leader logic, using hardcoded delegates
+
 
             // Update timestamp
             if (window.classDojoMeta && window.classDojoMeta.lastUpdated) {
