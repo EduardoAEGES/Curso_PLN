@@ -506,6 +506,73 @@
             cursor: pointer;
             width: 100%;
         }
+
+        @media (max-width: 768px) {
+            .stats-summary {
+                flex-direction: column;
+                /* Changed from grid-template-columns: 1fr; to flex-direction: column; for flex container */
+            }
+
+            .stat-box {
+                padding: 15px;
+                margin: 10px 0;
+                /* Added margin for vertical spacing */
+            }
+
+            header {
+                /* Changed from .header to header */
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .podium-container {
+                /* Changed from .podium to .podium-container */
+                height: 350px;
+                padding-bottom: 20px;
+                gap: 10px;
+            }
+
+            .podium-place {
+                /* Changed from .podium-item to .podium-place */
+                width: 80px;
+            }
+
+            .podium-place.place-1 .podium-step {
+                height: 120px;
+            }
+
+            /* Adjusted for specific podium places */
+            .podium-place.place-2 .podium-step {
+                height: 90px;
+            }
+
+            .podium-place.place-3 .podium-step {
+                height: 70px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                padding: 15px;
+            }
+
+            .detailed-grades {
+                grid-template-columns: 1fr;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
+
+            .hide-mobile {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -579,17 +646,20 @@
                 </div>
             </div>
             <div class="card">
-                <h3>Detalle por Estudiante</h3>
-                <div style="max-height: 400px; overflow-y: auto;">
+                <h3 style="margin-top:0">Detalle por Estudiante</h3>
+                <div class="table-container">
                     <table id="studentsTable">
                         <thead>
                             <tr>
                                 <th>Estudiante</th>
                                 <th>Puntos</th>
+                                <th class="hide-mobile">Puntualidad</th>
+                                <th class="hide-mobile">Participación</th>
+                                <th class="hide-mobile">Tarea</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Rows will be populated by JS -->
+                        <tbody id="studentTableBody">
+                            <!-- Data populated by JS -->
                         </tbody>
                     </table>
                 </div>
