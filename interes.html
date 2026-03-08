@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CERTUS - Simulación de Intereses</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --certus-blue: #00469b;
+            --certus-cyan: #00a9e0;
+            --primary: var(--certus-cyan);
+            --secondary: #f97316;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --accent: #0284c7;
+            --border: #e2e8f0;
+            --success: #22c55e;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1440px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .logo-container img {
+            height: 45px;
+        }
+
+        .title-group h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--certus-blue);
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 1100px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border);
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 1rem;
+            color: var(--certus-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        input {
+            width: 100%;
+            background: #f1f5f9;
+            border: 2px solid var(--border);
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            border-radius: 0.75rem;
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(0, 169, 224, 0.1);
+        }
+
+        input:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        button {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .btn-primary {
+            background: var(--certus-blue);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--certus-cyan);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: white;
+            border: 2px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .viz-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .chart-card {
+            height: 450px;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-box {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .stat-box .val {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .s-val {
+            color: var(--certus-cyan);
+        }
+
+        .c-val {
+            color: var(--secondary);
+        }
+
+        .table-card {
+            padding: 1.25rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            max-height: 320px;
+            margin-top: 0.75rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            color: var(--text-muted);
+            padding: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .current-row {
+            background: rgba(0, 169, 224, 0.05);
+            font-weight: 600;
+        }
+
+        .indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .ind-s {
+            background: var(--certus-cyan);
+        }
+
+        .ind-c {
+            background: var(--secondary);
+        }
+
+        .log-panel {
+            margin-top: 0.75rem;
+            padding: 1rem;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 0.75rem;
+            color: #166534;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .credits {
+            margin-top: auto;
+            padding: 1.5rem 0;
+            width: 100%;
+            max-width: 1440px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .credits strong {
+            color: var(--certus-blue);
+        }
+
+        footer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            width: 100%;
+            max-width: 1400px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-left {
+            font-weight: 600;
+            color: var(--certus-blue);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="https://www.certus.edu.pe/blog/wp-content/uploads/2020/02/certus-log.png" alt="CERTUS Logo">
+            </div>
+            <div class="title-group">
+                <h1>Simulador Financiero</h1>
+            </div>
+            <div class="stat-box"
+                style="padding: 0.5rem 1.5rem; min-width: 150px; background: var(--certus-blue); border: none;">
+                <h3 style="font-size:0.75rem; color: rgba(255,255,255,0.7)">Año Actual</h3>
+                <span id="currentPeriodDisplay" class="val" style="font-size: 1.6rem; color: white;">0</span>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <aside class="card controls">
+                <div class="form-group">
+                    <label for="capital">Inversión Inicial</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">S/</span>
+                        <input type="number" id="capital" value="1000" min="1" step="100">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tasa">TEA (Tasa Efectiva Anual %)</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix" style="left:auto; right:1.5rem; color:var(--text-muted)">%</span>
+                        <input type="number" id="tasa" value="10" min="0.1" step="0.5" style="padding-left:1.5rem">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="periodos">Tiempo de Meta (Años)</label>
+                    <input type="number" id="periodos" value="20" min="1" max="50" style="padding-left:1.5rem">
+                    <small style="color:var(--text-muted); font-size:0.75rem">Límite: 50 años</small>
+                </div>
+
+                <div class="btn-group">
+                    <button id="nextBtn" class="btn-primary">Capitalizar Año</button>
+                    <button id="resetBtn" class="btn-danger">Reiniciar</button>
+                </div>
+
+                <div id="logPanel" class="log-panel">
+                    <strong>Listo para comenzar</strong><br>
+                    Configure los parámetros y presione el botón azul para simular año a año.
+                </div>
+
+                <div class="credits">
+                    <span>Curso: <strong>Pensamiento Lógico para los Negocios 2026</strong></span>
+                    <span>Elaborado por: <strong>Eduardo Mamani Roque</strong></span>
+                </div>
+            </aside>
+
+            <div class="viz-container">
+                <div class="card chart-card">
+                    <canvas id="interestChart"></canvas>
+                </div>
+
+                <div class="card table-card">
+                    <h2 style="font-size: 1.4rem; color: var(--certus-blue); font-weight: 700; margin-bottom: 0.5rem;">
+                        Desglose Detallado</h2>
+                    <div class="table-container">
+                        <table id="breakdownTable">
+                            <thead>
+                                <tr>
+                                    <th>Año</th>
+                                    <th><span class="indicator ind-s"></span> Base Simple</th>
+                                    <th><span class="indicator ind-s"></span> Interés S.</th>
+                                    <th><span class="indicator ind-c"></span> Base Comp.</th>
+                                    <th><span class="indicator ind-c"></span> Interés C.</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="stats-summary">
+                    <div class="stat-box">
+                        <h3>Monto Final (Simple)</h3>
+                        <span id="finalSimple" class="val s-val">S/ 0.00</span>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Monto Final (Compuesto)</h3>
+                        <span id="finalCompound" class="val c-val">S/ 0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('interestChart').getContext('2d');
+        let chart;
+        let currentPeriod = 0;
+        let P, r, n;
+
+        function formatSoles(amount) {
+            return 'S/ ' + amount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function initChart() {
+            if (chart) chart.destroy();
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Inicial'],
+                    datasets: [
+                        {
+                            label: 'Interés Simple',
+                            data: [parseFloat(document.getElementById('capital').value)],
+                            backgroundColor: '#00a9e0',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Interés Compuesto',
+                            data: [parseFloat(document.getElementById('capital').value)],
+                            backgroundColor: '#f97316',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 14 } } },
+                        y: {
+                            ticks: { callback: v => 'S/ ' + v.toLocaleString(), font: { size: 12 } },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { family: 'Outfit', size: 14 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => context.dataset.label + ': ' + formatSoles(context.parsed.y)
+                            }
+                        }
+                    },
+                    animation: { duration: 500 }
+                }
+            });
+        }
+
+        function reset() {
+            P = parseFloat(document.getElementById('capital').value);
+            r = parseFloat(document.getElementById('tasa').value) / 100;
+            n = parseInt(document.getElementById('periodos').value);
+
+            // Limit to 50
+            if (n > 50) {
+                n = 50;
+                document.getElementById('periodos').value = 50;
+            }
+
+            currentPeriod = 0;
+            document.getElementById('capital').disabled = false;
+            document.getElementById('tasa').disabled = false;
+            document.getElementById('periodos').disabled = false;
+            document.getElementById('nextBtn').disabled = false;
+
+            document.getElementById('currentPeriodDisplay').textContent = "0";
+            document.getElementById('finalSimple').textContent = formatSoles(P);
+            document.getElementById('finalCompound').textContent = formatSoles(P);
+
+            document.getElementById('logPanel').innerHTML = `<strong>Simulador Reiniciado</strong><br>Capital base: S/ ${P.toLocaleString()}. Listo para proyectar hasta ${n} años.`;
+            document.getElementById('logPanel').style.background = "#f0fdf4";
+            document.getElementById('logPanel').style.borderColor = "#bbf7d0";
+
+            const tbody = document.getElementById('breakdownTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = `<tr><td>0</td><td>${formatSoles(P)}</td><td>-</td><td>${formatSoles(P)}</td><td>-</td></tr>`;
+
+            initChart();
+        }
+
+        function nextStep() {
+            if (currentPeriod >= n) return;
+
+            if (currentPeriod === 0) {
+                document.getElementById('capital').disabled = true;
+                document.getElementById('tasa').disabled = true;
+                document.getElementById('periodos').disabled = true;
+            }
+
+            currentPeriod++;
+
+            const simpleValue = P * (1 + r * currentPeriod);
+            const previousCompound = P * Math.pow((1 + r), currentPeriod - 1);
+            const compoundValue = P * Math.pow((1 + r), currentPeriod);
+            const compIntPeriod = compoundValue - previousCompound;
+
+            chart.data.labels.push('A' + currentPeriod);
+            chart.data.datasets[0].data.push(simpleValue.toFixed(2));
+            chart.data.datasets[1].data.push(compoundValue.toFixed(2));
+            chart.update();
+
+            document.getElementById('currentPeriodDisplay').textContent = currentPeriod;
+            document.getElementById('finalSimple').textContent = formatSoles(simpleValue);
+            document.getElementById('finalCompound').textContent = formatSoles(compoundValue);
+
+            document.getElementById('logPanel').innerHTML = `
+                <strong>Año ${currentPeriod}:</strong><br>
+                Capitalización generó <strong>${formatSoles(compIntPeriod)}</strong> adicionales.
+            `;
+            document.getElementById('logPanel').style.background = "#eff6ff";
+            document.getElementById('logPanel').style.borderColor = "#bee3f8";
+
+            const tbody = document.getElementById('breakdownTable').getElementsByTagName('tbody')[0];
+            const row = tbody.insertRow(0);
+            row.className = "current-row";
+            row.innerHTML = `
+                <td><strong>${currentPeriod}</strong></td>
+                <td>${formatSoles(P)}</td>
+                <td style="color:var(--certus-cyan)">+ ${formatSoles(P * r)}</td>
+                <td>${formatSoles(previousCompound)}</td>
+                <td style="color:var(--secondary)">+ ${formatSoles(compIntPeriod)}</td>
+            `;
+
+            if (currentPeriod === n) {
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('logPanel').innerHTML = `<strong>¡Proyección Finalizada!</strong><br>Interés compuesto superó al simple por ${formatSoles(compoundValue - simpleValue)}.`;
+            }
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', nextStep);
+        document.getElementById('resetBtn').addEventListener('click', reset);
+
+        reset();
+    </script>
+</body>
+
+</html>
