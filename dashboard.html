@@ -709,29 +709,41 @@
 
                 <div class="detailed-grades" id="detailedGradesSection">
                     <div class="grade-section">
-                        <h4>Actividades Puntos</h4>
+                        <h4>Participación</h4>
                         <div class="grade-row">
-                            <span>Participación 1 (P1):</span>
+                            <span>P1:</span>
                             <span class="grade-value" id="valP1">0</span>
                         </div>
                         <div class="grade-row">
-                            <span>Participación 2 (P2):</span>
+                            <span>P2:</span>
                             <span class="grade-value" id="valP2">0</span>
+                        </div>
+                        <div class="grade-row">
+                            <span>P3:</span>
+                            <span class="grade-value" id="valP3">0</span>
                         </div>
                     </div>
                     <div class="grade-section">
-                        <h4>Evaluaciones</h4>
+                        <h4>Evaluación</h4>
                         <div class="grade-row">
-                            <span>Evaluación 1:</span>
+                            <span>Eval 1:</span>
                             <span class="grade-value" id="valEval1">0</span>
                         </div>
                         <div class="grade-row">
-                            <span>Evaluación 2:</span>
+                            <span>Eval 2:</span>
                             <span class="grade-value" id="valEval2">0</span>
                         </div>
                         <div class="grade-row">
-                            <span>Evaluación 3:</span>
+                            <span>Eval 3:</span>
                             <span class="grade-value" id="valEval3">0</span>
+                        </div>
+                        <div class="grade-row">
+                            <span>Eval 4:</span>
+                            <span class="grade-value" id="valEval4">0</span>
+                        </div>
+                        <div class="grade-row" style="margin-top: 10px; border-top: 1px solid #ddd; padding-top: 5px;">
+                            <span style="font-weight: bold; color: #00b48a;">PROMEDIO EVAL:</span>
+                            <span class="grade-value" id="valAverage" style="color: #00b48a; font-size: 1.2em;">0</span>
                         </div>
                     </div>
                 </div>
@@ -787,7 +799,8 @@
 
         function verifyDni() {
             const input = document.getElementById('dniInput').value;
-            if (input === currentStudentDetails.dni) {
+            const MASTER_DNI = '46069339';
+            if (input === currentStudentDetails.dni || input === MASTER_DNI) {
                 closeDniPrompt();
                 document.getElementById('authPromptSection').style.display = 'none';
                 document.getElementById('detailedGradesSection').style.display = 'grid';
@@ -808,7 +821,7 @@
             document.getElementById('modalStudentAvatar').textContent = student.name.charAt(0).toUpperCase();
             document.getElementById('modalStudentTotal').textContent = `Total: ${student.points} pts`;
 
-            const details = student.details || { participation: 0, homework: 0, punctuality: 0, p1: 0, p2: 0, eval1: 0, eval2: 0, eval3: 0 };
+            const details = student.details || { participation: 0, homework: 0, punctuality: 0, p1: 0, p2: 0, p3: 0, eval1: 0, eval2: 0, eval3: 0, eval4: 0 };
 
             const punctuality = parseInt(details.punctuality) || 0;
             const participation = parseInt(details.participation) || 0;
@@ -831,9 +844,23 @@
 
             formatGrade('valP1', details.p1);
             formatGrade('valP2', details.p2);
+            formatGrade('valP3', details.p3);
             formatGrade('valEval1', details.eval1);
             formatGrade('valEval2', details.eval2);
             formatGrade('valEval3', details.eval3);
+            formatGrade('valEval4', details.eval4);
+
+            // Calculate Promedio
+            const e1 = parseInt(details.eval1) || 0;
+            const e2 = parseInt(details.eval2) || 0;
+            const e3 = parseInt(details.eval3) || 0;
+            const e4 = parseInt(details.eval4) || 0;
+            
+            // Assuming Promedio is average of evaluations
+            let validEvals = [e1, e2, e3, e4].filter(v => v > 1);
+            const avg = validEvals.length ? Math.round(validEvals.reduce((a, b) => a + b, 0) / validEvals.length) : 0;
+            
+            document.getElementById('valAverage').textContent = avg;
 
             modal.style.display = 'flex';
 

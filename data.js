@@ -9,9 +9,11 @@ window.classDojoData = [
             "punctuality": 4,
             "p1": 20,
             "p2": 20,
+            "p3": 19,
             "eval1": 18,
             "eval2": 19,
-            "eval3": 19
+            "eval3": 19,
+            "eval4": 0
         }
     },
     {
@@ -24,9 +26,11 @@ window.classDojoData = [
             "punctuality": 7,
             "p1": 20,
             "p2": 20,
+            "p3": 20,
             "eval1": 20,
             "eval2": 19,
-            "eval3": 20
+            "eval3": 20,
+            "eval4": 0
         }
     },
     {
@@ -39,9 +43,11 @@ window.classDojoData = [
             "punctuality": 7,
             "p1": 18,
             "p2": 20,
+            "p3": 20,
             "eval1": 18,
             "eval2": 19,
-            "eval3": 18
+            "eval3": 18,
+            "eval4": 0
         }
     },
     {
@@ -54,9 +60,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -69,9 +77,11 @@ window.classDojoData = [
             "punctuality": 2,
             "p1": 20,
             "p2": 18,
+            "p3": 5,
             "eval1": 19,
             "eval2": 15,
-            "eval3": 14
+            "eval3": 14,
+            "eval4": 0
         }
     },
     {
@@ -84,9 +94,11 @@ window.classDojoData = [
             "punctuality": 3,
             "p1": 9,
             "p2": 18,
+            "p3": 19,
             "eval1": 19,
             "eval2": 18,
-            "eval3": 18
+            "eval3": 18,
+            "eval4": 0
         }
     },
     {
@@ -99,9 +111,11 @@ window.classDojoData = [
             "punctuality": 7,
             "p1": 20,
             "p2": 20,
+            "p3": 20,
             "eval1": 19,
             "eval2": 20,
-            "eval3": 19
+            "eval3": 19,
+            "eval4": 0
         }
     },
     {
@@ -114,9 +128,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -129,9 +145,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -144,9 +162,11 @@ window.classDojoData = [
             "punctuality": 4,
             "p1": 18,
             "p2": 20,
+            "p3": 5,
             "eval1": 19,
             "eval2": 1,
-            "eval3": 14
+            "eval3": 14,
+            "eval4": 0
         }
     },
     {
@@ -159,9 +179,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 20,
             "p2": 9,
+            "p3": 0,
             "eval1": 20,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -174,9 +196,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -189,9 +213,11 @@ window.classDojoData = [
             "punctuality": 1,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -204,9 +230,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -219,9 +247,11 @@ window.classDojoData = [
             "punctuality": 7,
             "p1": 20,
             "p2": 20,
+            "p3": 20,
             "eval1": 19,
             "eval2": 20,
-            "eval3": 20
+            "eval3": 20,
+            "eval4": 0
         }
     },
     {
@@ -234,9 +264,11 @@ window.classDojoData = [
             "punctuality": 2,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 13,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -249,9 +281,11 @@ window.classDojoData = [
             "punctuality": 5,
             "p1": 20,
             "p2": 18,
+            "p3": 17,
             "eval1": 20,
             "eval2": 14,
-            "eval3": 14
+            "eval3": 14,
+            "eval4": 0
         }
     },
     {
@@ -264,9 +298,11 @@ window.classDojoData = [
             "punctuality": 7,
             "p1": 20,
             "p2": 18,
+            "p3": 18,
             "eval1": 20,
             "eval2": 19,
-            "eval3": 19
+            "eval3": 19,
+            "eval4": 0
         }
     },
     {
@@ -279,9 +315,11 @@ window.classDojoData = [
             "punctuality": 1,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -294,9 +332,11 @@ window.classDojoData = [
             "punctuality": 5,
             "p1": 20,
             "p2": 18,
+            "p3": 18,
             "eval1": 20,
             "eval2": 19,
-            "eval3": 18
+            "eval3": 18,
+            "eval4": 0
         }
     },
     {
@@ -309,9 +349,11 @@ window.classDojoData = [
             "punctuality": 8,
             "p1": 19,
             "p2": 20,
+            "p3": 20,
             "eval1": 18,
             "eval2": 20,
-            "eval3": 20
+            "eval3": 20,
+            "eval4": 0
         }
     },
     {
@@ -324,9 +366,11 @@ window.classDojoData = [
             "punctuality": 8,
             "p1": 20,
             "p2": 20,
+            "p3": 20,
             "eval1": 18,
             "eval2": 20,
-            "eval3": 20
+            "eval3": 20,
+            "eval4": 0
         }
     },
     {
@@ -339,9 +383,11 @@ window.classDojoData = [
             "punctuality": 2,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 18,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -354,9 +400,11 @@ window.classDojoData = [
             "punctuality": 1,
             "p1": 19,
             "p2": 1,
+            "p3": 0,
             "eval1": 1,
             "eval2": 16,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -369,9 +417,11 @@ window.classDojoData = [
             "punctuality": 8,
             "p1": 20,
             "p2": 20,
+            "p3": 20,
             "eval1": 20,
             "eval2": 19,
-            "eval3": 20
+            "eval3": 20,
+            "eval4": 0
         }
     },
     {
@@ -384,9 +434,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 1,
             "p2": 0,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -399,9 +451,11 @@ window.classDojoData = [
             "punctuality": 7,
             "p1": 20,
             "p2": 20,
+            "p3": 20,
             "eval1": 19,
             "eval2": 20,
-            "eval3": 20
+            "eval3": 19,
+            "eval4": 0
         }
     },
     {
@@ -414,9 +468,11 @@ window.classDojoData = [
             "punctuality": 5,
             "p1": 20,
             "p2": 18,
+            "p3": 20,
             "eval1": 1,
             "eval2": 17,
-            "eval3": 14
+            "eval3": 14,
+            "eval4": 0
         }
     },
     {
@@ -429,9 +485,11 @@ window.classDojoData = [
             "punctuality": 0,
             "p1": 9,
             "p2": 1,
+            "p3": 0,
             "eval1": 1,
             "eval2": 1,
-            "eval3": 1
+            "eval3": 1,
+            "eval4": 0
         }
     },
     {
@@ -444,9 +502,11 @@ window.classDojoData = [
             "punctuality": 5,
             "p1": 20,
             "p2": 10,
+            "p3": 18,
             "eval1": 17,
             "eval2": 1,
-            "eval3": 16
+            "eval3": 16,
+            "eval4": 0
         }
     },
     {
@@ -459,13 +519,13 @@ window.classDojoData = [
             "punctuality": 7,
             "p1": 20,
             "p2": 18,
+            "p3": 20,
             "eval1": 20,
             "eval2": 19,
-            "eval3": 18
+            "eval3": 18,
+            "eval4": 0
         }
     }
 ];
 
-window.classDojoMeta = { 'lastUpdated': '03/03/2026 21:30' };
-
-
+window.classDojoMeta = { 'lastUpdated': '11/03/2026 08:00' };
