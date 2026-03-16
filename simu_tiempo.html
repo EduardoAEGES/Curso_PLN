@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Diagrama de Tiempo - Matemática Financiera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #334155;
+            --accent: #3b82f6;
+            --income: #10b981;
+            --expense: #ef4444;
+            --combined: #8b5cf6;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 1.5rem 2rem;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .certus-logo {
+            max-height: 50px;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            width: 95%;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+
+        .simulator-container {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+        }
+
+        .controls-panel {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .btn {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: inherit;
+        }
+
+        .btn-income {
+            background-color: var(--income);
+            color: white;
+        }
+
+        .btn-income:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-expense {
+            background-color: var(--expense);
+            color: white;
+        }
+
+        .btn-expense:hover {
+            background-color: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background-color: #e2e8f0;
+            color: var(--secondary);
+        }
+
+        .btn-reset:hover {
+            background-color: #cbd5e1;
+        }
+
+        #diagram-svg {
+            width: 100%;
+            height: 100%;
+            flex: 1;
+            user-select: none;
+            cursor: crosshair;
+        }
+
+        .timeline-line {
+            stroke: #94a3b8;
+            stroke-width: 2;
+        }
+
+        .tick-line {
+            stroke: #cbd5e1;
+            stroke-width: 1;
+        }
+
+        .tick-label {
+            font-size: 12px;
+            fill: var(--text-muted);
+            font-weight: 500;
+            text-anchor: middle;
+        }
+
+        .special-label {
+            font-size: 11px;
+            fill: var(--accent);
+            font-weight: 700;
+            text-anchor: middle;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .special-label:hover {
+            transform: scale(1.1);
+            fill: var(--primary);
+        }
+
+        .focal-marker {
+            fill: rgba(59, 130, 246, 0.1);
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-dasharray: 4;
+        }
+
+        .origin-shadow {
+            stroke-dasharray: 4;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Flow Arrow Styles */
+        .flow-arrow {
+            cursor: grab;
+            transition: opacity 0.2s;
+        }
+
+        .flow-arrow:active {
+            cursor: grabbing;
+        }
+
+        .flow-arrow:hover {
+            filter: brightness(1.1);
+        }
+
+        .flow-tooltip {
+            pointer-events: none;
+            background: rgba(15, 23, 42, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            position: absolute;
+            display: none;
+        }
+
+        .legend {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .author-footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+            background: #fff;
+        }
+
+        .control-input {
+            padding: 0.5rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="LOGO_CERTUS_SUNAT.png" alt="Certus Logo" class="certus-logo">
+        </div>
+        <div class="header-content">
+            <h1>Simulador de Diagrama de Tiempo</h1>
+            <p class="subtitle">Visualiza capitalización, descuento y fecha focal</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="simulator-container">
+            <svg id="diagram-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+                <!-- Layers -->
+                <g id="grid-layer"></g>
+                <g id="timeline-layer"></g>
+                <g id="flows-layer"></g>
+                <g id="labels-layer"></g>
+            </svg>
+            <div id="tooltip" class="flow-tooltip"></div>
+        </section>
+
+        <section class="controls-panel">
+            <div class="control-group">
+                <label for="interest-rate">TASA DE INTERÉS (i): <span id="rate-value">10</span>%</label>
+                <input type="range" id="interest-rate" min="0" max="50" step="1" value="10">
+            </div>
+
+            <div class="control-group">
+                <label for="flow-period">PERIODO INICIAL:</label>
+                <input type="number" id="flow-period" class="control-input" value="0" min="0" max="10">
+            </div>
+
+            <div class="control-group">
+                <label for="flow-value">MONTO DEL FLUJO (S/):</label>
+                <input type="number" id="flow-value" class="control-input" value="100" min="1">
+            </div>
+
+            <div class="control-group">
+                <button id="add-income" class="btn btn-income">
+                    <span>+</span> Agregar Ingreso (S/)
+                </button>
+                <button id="add-expense" class="btn btn-expense">
+                    <span>-</span> Agregar Egreso (S/)
+                </button>
+            </div>
+
+            <button id="reset-sim" class="btn btn-reset">Reiniciar Simulador</button>
+
+            <div class="legend">
+                <p><strong>Guía:</strong></p>
+                <div class="legend-item"><span class="dot" style="background: var(--income)"></span> Ingresos (Arriba)</div>
+                <div class="legend-item"><span class="dot" style="background: var(--expense)"></span> Egresos (Abajo)</div>
+                <div class="legend-item"><span class="dot" style="background: var(--combined)"></span> Flujos Combinados</div>
+                <p style="margin-top: 10px; font-size: 0.8rem;">* Arrastra las flechas para capitalizar o descontar.</p>
+                <p style="font-size: 0.8rem;">* Suelta en un periodo para combinar flujos.</p>
+                <p style="font-size: 0.8rem; color: var(--accent); font-weight: bold;">* Doble clic en flujos combinados para expandirlos.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="author-footer">
+        Elaborado por: Eduardo Mamani Roque &copy; 2026
+    </footer>
+
+    <script>
+        const svg = document.getElementById('diagram-svg');
+        const flowsLayer = document.getElementById('flows-layer');
+        const timelineLayer = document.getElementById('timeline-layer');
+        const labelsLayer = document.getElementById('labels-layer');
+        const rateSlider = document.getElementById('interest-rate');
+        const rateDisplay = document.getElementById('rate-value');
+        const tooltip = document.getElementById('tooltip');
+
+        const CONFIG = {
+            width: 800,
+            height: 400,
+            padding: 60,
+            periods: 10,
+            baseValue: 100,
+            snapThreshold: 15, // pixels
+            arrowWidth: 4,
+            headSize: 8
+        };
+
+        let state = {
+            interestRate: 0.10,
+            flows: [], // { id, x, value, color, originX, originValue, isCombined, children }
+            isDragging: false,
+            draggedFlow: null,
+            startX: 0,
+            focalPeriod: null
+        };
+
+        // Initialize Timeline
+        function initTimeline() {
+            const timelineY = CONFIG.height / 2;
+            const startX = CONFIG.padding;
+            const endX = CONFIG.width - CONFIG.padding;
+            const step = (endX - startX) / CONFIG.periods;
+
+            // Main Line
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", startX - 20);
+            line.setAttribute("y1", timelineY);
+            line.setAttribute("x2", endX + 20);
+            line.setAttribute("y2", timelineY);
+            line.setAttribute("class", "timeline-line");
+            timelineLayer.appendChild(line);
+
+            // Ticks and Labels
+            for (let i = 0; i <= CONFIG.periods; i++) {
+                const x = startX + i * step;
+                
+                // Tick
+                const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                tick.setAttribute("x1", x);
+                tick.setAttribute("y1", timelineY - 5);
+                tick.setAttribute("x2", x);
+                tick.setAttribute("y2", timelineY + 5);
+                tick.setAttribute("class", "tick-line");
+                timelineLayer.appendChild(tick);
+
+                // Label
+                const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                label.setAttribute("x", x);
+                label.setAttribute("y", timelineY + 25);
+                label.setAttribute("class", "tick-label");
+                label.style.cursor = "pointer";
+                label.textContent = i;
+                label.onclick = () => setFocalDate(i);
+                labelsLayer.appendChild(label);
+
+                // PD / FD Labels
+                if (i === 0) {
+                    const extra = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    extra.setAttribute("x", x);
+                    extra.setAttribute("y", timelineY + 40);
+                    extra.setAttribute("class", "special-label");
+                    extra.textContent = "PD (Hoy)";
+                    extra.onclick = () => setFocalDate(0);
+                    labelsLayer.appendChild(extra);
+                } else if (i === CONFIG.periods) {
+                    const extra = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    extra.setAttribute("x", x);
+                    extra.setAttribute("y", timelineY + 40);
+                    extra.setAttribute("class", "special-label");
+                    extra.textContent = "FD";
+                    extra.onclick = () => setFocalDate(CONFIG.periods);
+                    labelsLayer.appendChild(extra);
+                }
+            }
+        }
+
+        function setFocalDate(period) {
+            state.focalPeriod = period;
+            renderTimelineExtras();
+        }
+
+        function renderTimelineExtras() {
+            const gridLayer = document.getElementById('grid-layer');
+            gridLayer.innerHTML = '';
+            
+            if (state.focalPeriod !== null) {
+                const startX = CONFIG.padding;
+                const endX = CONFIG.width - CONFIG.padding;
+                const step = (endX - startX) / CONFIG.periods;
+                const x = startX + state.focalPeriod * step;
+                
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", x - 15);
+                rect.setAttribute("y", 20);
+                rect.setAttribute("width", 30);
+                rect.setAttribute("height", CONFIG.height - 40);
+                rect.setAttribute("class", "focal-marker");
+                rect.setAttribute("rx", 5);
+                gridLayer.appendChild(rect);
+
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", x);
+                text.setAttribute("y", 15);
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("fill", "var(--accent)");
+                text.setAttribute("font-size", "10");
+                text.setAttribute("font-weight", "bold");
+                text.textContent = "FECHA FOCAL";
+                gridLayer.appendChild(text);
+            }
+        }
+
+        // Flow Management
+        function addFlow(baseValue) {
+            const period = parseInt(document.getElementById('flow-period').value) || 0;
+            const id = Date.now() + Math.random().toString(36).substr(2, 9);
+            
+            const startX = CONFIG.padding;
+            const endX = CONFIG.width - CONFIG.padding;
+            const step = (endX - startX) / CONFIG.periods;
+            const x = startX + period * step;
+            
+            const color = baseValue > 0 ? 'var(--income)' : 'var(--expense)';
+            
+            const flow = {
+                id,
+                x: x,
+                value: baseValue,
+                color: color,
+                originX: x,
+                originValue: baseValue,
+                isCombined: false,
+                children: []
+            };
+            
+            state.flows.push(flow);
+            renderFlows();
+        }
+
+        function renderFlows() {
+            flowsLayer.innerHTML = '';
+            state.flows.forEach(flow => {
+                const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                g.setAttribute("class", "flow-arrow");
+                g.setAttribute("data-id", flow.id);
+
+                const timelineY = CONFIG.height / 2;
+                const height = flow.value;
+
+                // Shadows at Origin
+                const drawShadow = (originX, originValue, color) => {
+                    const shadow = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    shadow.setAttribute("x1", originX);
+                    shadow.setAttribute("y1", timelineY);
+                    shadow.setAttribute("x2", originX);
+                    shadow.setAttribute("y2", timelineY - originValue);
+                    shadow.setAttribute("stroke", color);
+                    shadow.setAttribute("stroke-width", 2);
+                    shadow.setAttribute("class", "origin-shadow");
+                    flowsLayer.appendChild(shadow);
+                };
+
+                if (flow.isCombined) {
+                    flow.children.forEach(child => {
+                        if (Math.abs(flow.x - child.originX) > 1) {
+                            drawShadow(child.originX, child.originValue, child.color);
+                        }
+                    });
+                } else {
+                    if (Math.abs(flow.x - flow.originX) > 1) {
+                        drawShadow(flow.originX, flow.originValue, flow.color);
+                    }
+                }
+                
+                // Arrow Line
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", flow.x);
+                line.setAttribute("y1", timelineY);
+                line.setAttribute("x2", flow.x);
+                line.setAttribute("y2", timelineY - height);
+                line.setAttribute("stroke", flow.color);
+                line.setAttribute("stroke-width", CONFIG.arrowWidth);
+                line.setAttribute("stroke-linecap", "round");
+                g.appendChild(line);
+
+                // Arrow Head
+                const head = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                const direction = height > 0 ? -1 : 1;
+                const tipY = timelineY - height;
+                const path = `M ${flow.x - CONFIG.headSize} ${tipY - direction * CONFIG.headSize} 
+                              L ${flow.x} ${tipY} 
+                              L ${flow.x + CONFIG.headSize} ${tipY - direction * CONFIG.headSize}`;
+                head.setAttribute("d", path);
+                head.setAttribute("fill", "none");
+                head.setAttribute("stroke", flow.color);
+                head.setAttribute("stroke-width", CONFIG.arrowWidth);
+                head.setAttribute("stroke-linecap", "round");
+                head.setAttribute("stroke-linejoin", "round");
+                g.appendChild(head);
+
+                // Permanent Value Label
+                const valueLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                const labelYOffset = height > 0 ? -15 : 25;
+                valueLabel.setAttribute("x", flow.x + 10);
+                valueLabel.setAttribute("y", tipY + labelYOffset);
+                valueLabel.setAttribute("fill", flow.color);
+                valueLabel.setAttribute("font-size", "11px");
+                valueLabel.setAttribute("font-weight", "bold");
+                valueLabel.setAttribute("text-anchor", "start");
+                valueLabel.textContent = `S/ ${Math.abs(flow.value).toFixed(2)}`;
+                g.appendChild(valueLabel);
+
+                // Event Listeners for Dragging and Clicking
+                g.addEventListener('dblclick', (e) => {
+                    e.stopPropagation();
+                    if (flow.isCombined) uncombineFlow(flow);
+                });
+
+                g.addEventListener('mousedown', (e) => {
+                    startDrag(e, flow);
+                });
+                
+                flowsLayer.appendChild(g);
+            });
+        }
+
+        function uncombineFlow(flow) {
+            // Remove the combined flow
+            state.flows = state.flows.filter(f => f.id !== flow.id);
+            // Re-add children at the same X position they were at when combined
+            flow.children.forEach(child => {
+                child.x = flow.x;
+                // Value is already updated during the combined flow movement
+                state.flows.push(child);
+            });
+            renderFlows();
+        }
+
+        // Interaction Logic
+        function startDrag(e, flow) {
+            state.isDragging = true;
+            state.draggedFlow = flow;
+            const pt = getSVGPoint(e);
+            state.startX = pt.x - flow.x;
+            
+            document.addEventListener('mousemove', onDrag);
+            document.addEventListener('mouseup', endDrag);
+        }
+
+        function onDrag(e) {
+            if (!state.isDragging) return;
+            
+            const pt = getSVGPoint(e);
+            const newX = pt.x - state.startX;
+            
+            // Constrain to timeline
+            const minX = CONFIG.padding;
+            const endX = CONFIG.width - CONFIG.padding;
+            const clampedX = Math.max(minX, Math.min(endX, newX));
+
+            // Calculate valuation change based on time shift
+            const step = (endX - minX) / CONFIG.periods;
+            const oldT = (state.draggedFlow.x - minX) / step;
+            const newT = (clampedX - minX) / step;
+            const dt = newT - oldT;
+
+            // FV = PV * (1 + i)^n
+            const ratio = Math.pow(1 + state.interestRate, dt);
+            state.draggedFlow.value = state.draggedFlow.value * ratio;
+            state.draggedFlow.x = clampedX;
+            
+            // If it has children, update them too
+            if (state.draggedFlow.children) {
+                state.draggedFlow.children.forEach(child => {
+                    child.value = child.value * ratio;
+                    child.x = clampedX;
+                });
+            }
+
+            renderFlows();
+            showTooltip(e, state.draggedFlow);
+        }
+
+        function endDrag() {
+            if (!state.isDragging) return;
+            
+            // Check for Snapping and Combination
+            const minX = CONFIG.padding;
+            const endX = CONFIG.width - CONFIG.padding;
+            const step = (endX - minX) / CONFIG.periods;
+            
+            const timeIndex = Math.round((state.draggedFlow.x - minX) / step);
+            const snappedX = minX + timeIndex * step;
+            
+            if (Math.abs(state.draggedFlow.x - snappedX) < CONFIG.snapThreshold) {
+                state.draggedFlow.x = snappedX;
+                checkCombinations(snappedX);
+            }
+
+            state.isDragging = false;
+            state.draggedFlow = null;
+            tooltip.style.display = 'none';
+            
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('mouseup', endDrag);
+            renderFlows();
+        }
+
+        function checkCombinations(x) {
+            const flowsAtX = state.flows.filter(f => Math.abs(f.x - x) < 1);
+            if (flowsAtX.length > 1) {
+                // Combine them
+                const totalValue = flowsAtX.reduce((sum, f) => sum + f.value, 0);
+                const color = 'var(--combined)';
+                
+                // Collect children
+                let allChildren = [];
+                flowsAtX.forEach(f => {
+                    if (f.isCombined) {
+                        allChildren = allChildren.concat(f.children);
+                    } else {
+                        allChildren.push(f);
+                    }
+                });
+
+                // Remove individual flows
+                state.flows = state.flows.filter(f => !flowsAtX.includes(f));
+                
+                // Add new combined flow
+                state.flows.push({
+                    id: 'combined-' + Date.now(),
+                    x: x,
+                    value: totalValue,
+                    color: color,
+                    originX: x,
+                    originValue: totalValue,
+                    isCombined: true,
+                    children: allChildren
+                });
+            }
+        }
+
+        function getSVGPoint(e) {
+            const p = svg.createSVGPoint();
+            p.x = e.clientX;
+            p.y = e.clientY;
+            return p.matrixTransform(svg.getScreenCTM().inverse());
+        }
+
+        function showTooltip(e, flow) {
+            tooltip.style.display = 'block';
+            tooltip.style.left = (e.pageX + 10) + 'px';
+            tooltip.style.top = (e.pageY - 20) + 'px';
+            tooltip.textContent = `Valor: S/ ${Math.abs(flow.value).toFixed(2)}`;
+        }
+
+        // Event Listeners
+        rateSlider.addEventListener('input', () => {
+            state.interestRate = rateSlider.value / 100;
+            rateDisplay.textContent = rateSlider.value;
+        });
+
+        document.getElementById('add-income').addEventListener('click', () => {
+            const val = parseFloat(document.getElementById('flow-value').value) || 100;
+            addFlow(val);
+        });
+        document.getElementById('add-expense').addEventListener('click', () => {
+            const val = parseFloat(document.getElementById('flow-value').value) || 100;
+            addFlow(-val);
+        });
+        document.getElementById('reset-sim').addEventListener('click', () => {
+            state.flows = [];
+            renderFlows();
+        });
+
+        // Initialize
+        initTimeline();
+        renderFlows();
+
+    </script>
+</body>
+</html>
